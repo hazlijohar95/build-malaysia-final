@@ -37,7 +37,8 @@
       "Bash(ssh:*)",
       "Bash(gh ssh-key add:*)",
       "Bash(GIT_CURL_VERBOSE=1 git push origin master --force)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(git remote remove:*)"
     ],
     "deny": [],
     "ask": []
