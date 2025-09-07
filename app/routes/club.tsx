@@ -92,8 +92,8 @@ const upcomingEvents = [
     type: 'In-Person',
     attendees: 120,
     maxAttendees: 150,
-    image: '/api/placeholder/300/200',
-    description: 'Annual gathering of Malaysian tech leaders from global companies.',
+    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop&crop=center',
+    description: 'Annual gathering of Malaysian tech leaders from global companies.'
     speakers: ['Ahmad Rahman (Google)', 'Sarah Lim (Former Goldman Sachs)', 'Dr. Priya (DeepMind)']
   },
   {
@@ -105,8 +105,8 @@ const upcomingEvents = [
     type: 'Virtual',
     attendees: 45,
     maxAttendees: 50,
-    image: '/api/placeholder/300/200',
-    description: 'Informal discussion on the latest trends in Malaysian fintech.',
+    image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=300&h=200&fit=crop&crop=center',
+    description: 'Informal discussion on the latest trends in Malaysian fintech.'
     speakers: ['Marcus Tan (JPMorgan)', 'Lisa Wong (Grab Financial)']
   },
   {
@@ -118,8 +118,8 @@ const upcomingEvents = [
     type: 'In-Person',
     attendees: 25,
     maxAttendees: 30,
-    image: '/api/placeholder/300/200',
-    description: 'Exclusive discussion on transforming Malaysia\'s healthcare system.',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=200&fit=crop&crop=center',
+    description: 'Exclusive discussion on transforming Malaysia\'s healthcare system.'
     speakers: ['Dr. Raj Patel (Johns Hopkins)', 'Dr. Amy Chen (Mayo Clinic)']
   }
 ];
@@ -130,21 +130,21 @@ const testimonials = [
     content: 'The Build.Malaysia Club connected me with opportunities I never would have discovered on my own. Within 6 months of joining, I was offered a leadership role at a Malaysian unicorn startup.',
     author: 'Ahmad Zafran',
     title: 'Senior Software Engineer at Google',
-    image: '/api/placeholder/60/60'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face'
   },
   {
     id: 2,
     content: 'The quality of connections and conversations in this community is unmatched. It\'s like having a personal board of advisors from world-class companies.',
     author: 'Dr. Sarah Abdullah',
     title: 'Principal Scientist at Pfizer',
-    image: '/api/placeholder/60/60'
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b512d0b7?w=60&h=60&fit=crop&crop=face'
   },
   {
     id: 3,
     content: 'From visa guidance to business partnerships, the Club has been instrumental in my successful return to Malaysia. The executive tier benefits are worth every ringgit.',
     author: 'David Lim',
     title: 'Head of Product at Tesla',
-    image: '/api/placeholder/60/60'
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face'
   }
 ];
 

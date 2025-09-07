@@ -3,6 +3,134 @@ import { useState } from 'react';
 import Navigation from '~/components/Navigation';
 import Footer from '~/components/Footer';
 
+// Form validation types and utilities
+interface FormErrors {
+  [key: string]: string;
+}
+
+interface FormData {
+  // Step 1: Personal Information
+  fullName: string;
+  email: string;
+  phone: string;
+  location: string;
+  nationality: string;
+  
+  // Step 2: Professional Background
+  jobTitle: string;
+  currentCompany: string;
+  
+  // Step 3: Qualifications & Experience
+  education: string;
+  linkedinUrl: string;
+  
+  // Step 4: Achievements & Recognition
+  achievements: string;
+  awards: string;
+  publications: string;
+  innovations: string;
+  leadership: string;
+  
+  // Step 5: Contribution Potential
+  publicProfile: string;
+  malaysianConnection: string;
+  malaysianExperience: string;
+  contributionPlan: string;
+  roleInterests: string;
+  sectorInterests: string;
+  futureVision: string;
+}
+
+// Validation functions
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10,14}$/;
+  return phoneRegex.test(phone.replace(/\s/g, ''));
+};
+
+const validateUrl = (url: string): boolean => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const validateRequired = (value: string, minLength: number = 1): boolean => {
+  return value.trim().length >= minLength;
+};
+
+const validateForm = (data: FormData, currentStep: number): FormErrors => {
+  const errors: FormErrors = {};
+
+  if (currentStep >= 1) {
+    if (!validateRequired(data.fullName, 2)) {
+      errors.fullName = 'Full name is required (minimum 2 characters)';
+    }
+    if (!validateRequired(data.email) || !validateEmail(data.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+    if (!validateRequired(data.phone) || !validatePhone(data.phone)) {
+      errors.phone = 'Please enter a valid phone number';
+    }
+    if (!validateRequired(data.location, 3)) {
+      errors.location = 'Location is required (minimum 3 characters)';
+    }
+    if (!validateRequired(data.nationality, 2)) {
+      errors.nationality = 'Nationality is required';
+    }
+  }
+
+  if (currentStep >= 2) {
+    if (!validateRequired(data.jobTitle, 3)) {
+      errors.jobTitle = 'Job title is required (minimum 3 characters)';
+    }
+    if (!validateRequired(data.currentCompany, 2)) {
+      errors.currentCompany = 'Current company is required';
+    }
+  }
+
+  if (currentStep >= 3) {
+    if (!validateRequired(data.education, 10)) {
+      errors.education = 'Education details are required (minimum 10 characters)';
+    }
+    if (!validateRequired(data.linkedinUrl) || !validateUrl(data.linkedinUrl)) {
+      errors.linkedinUrl = 'Please enter a valid LinkedIn URL';
+    }
+  }
+
+  if (currentStep >= 4) {
+    if (!validateRequired(data.achievements, 50)) {
+      errors.achievements = 'Please describe your achievements (minimum 50 characters)';
+    }
+  }
+
+  if (currentStep >= 5) {
+    if (!validateRequired(data.malaysianConnection, 20)) {
+      errors.malaysianConnection = 'Please explain your connection to Malaysia (minimum 20 characters)';
+    }
+    if (!validateRequired(data.contributionPlan, 30)) {
+      errors.contributionPlan = 'Please describe how you plan to contribute (minimum 30 characters)';
+    }
+    if (!validateRequired(data.roleInterests, 10)) {
+      errors.roleInterests = 'Please describe your role interests (minimum 10 characters)';
+    }
+    if (!validateRequired(data.sectorInterests, 10)) {
+      errors.sectorInterests = 'Please specify your sector interests (minimum 10 characters)';
+    }
+    if (!validateRequired(data.futureVision, 30)) {
+      errors.futureVision = 'Please describe your future vision (minimum 30 characters)';
+    }
+  }
+
+  return errors;
+};
+
 export const meta: MetaFunction = () => {
   return [
     { title: 'Evaluation · Build.Malaysia' },
@@ -191,9 +319,10 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
   );
 }
 
-function PersonalInformationStep({ formData, setFormData }: { 
+function PersonalInformationStep({ formData, setFormData, errors = {} }: { 
   formData: FormData; 
   setFormData: (data: FormData) => void; 
+  errors?: FormErrors;
 }) {
   return (
     <div className="space-y-6">
@@ -207,10 +336,15 @@ function PersonalInformationStep({ formData, setFormData }: {
             id="fullName"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+              errors.fullName ? 'border-red-500 bg-red-50' : 'border-gray-300'
+            }`}
             placeholder="Enter your full name"
             required
           />
+          {errors.fullName && (
+            <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
+          )}
         </div>
         
         <div>
@@ -222,10 +356,15 @@ function PersonalInformationStep({ formData, setFormData }: {
             id="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+              errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+            }`}
             placeholder="your@email.com"
             required
           />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          )}
         </div>
       </div>
       
@@ -239,10 +378,15 @@ function PersonalInformationStep({ formData, setFormData }: {
             id="phone"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+              errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+            }`}
             placeholder="+60 12 345 6789"
             required
           />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+          )}
         </div>
         
         <div>
@@ -672,35 +816,64 @@ export default function Evaluation() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isValidating, setIsValidating] = useState(false);
 
   const handleNext = () => {
-    if (currentStep < steps.length) {
-      setCurrentStep(currentStep + 1);
+    setIsValidating(true);
+    const currentErrors = validateForm(formData, currentStep);
+    setErrors(currentErrors);
+    
+    if (Object.keys(currentErrors).length === 0) {
+      if (currentStep < steps.length) {
+        setCurrentStep(currentStep + 1);
+        setErrors({}); // Clear errors when moving to next step
+      }
     }
+    setIsValidating(false);
   };
 
   const handlePrevious = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      setErrors({}); // Clear errors when going back
     }
   };
 
   const handleSubmit = () => {
-    setIsSubmitted(true);
+    setIsValidating(true);
+    const finalErrors = validateForm(formData, 5); // Validate all steps
+    setErrors(finalErrors);
+    
+    if (Object.keys(finalErrors).length === 0) {
+      // Here you would normally send the data to your backend
+      console.log('Form submitted successfully:', formData);
+      setIsSubmitted(true);
+    } else {
+      // If there are errors, go to the first step with errors
+      for (let step = 1; step <= 5; step++) {
+        const stepErrors = validateForm(formData, step);
+        if (Object.keys(stepErrors).length > 0) {
+          setCurrentStep(step);
+          break;
+        }
+      }
+    }
+    setIsValidating(false);
   };
 
   const renderCurrentStep = () => {
     switch (currentStep) {
       case 1:
-        return <PersonalInformationStep formData={formData} setFormData={setFormData} />;
+        return <PersonalInformationStep formData={formData} setFormData={setFormData} errors={errors} />;
       case 2:
-        return <ProfessionalBackgroundStep formData={formData} setFormData={setFormData} />;
+        return <ProfessionalBackgroundStep formData={formData} setFormData={setFormData} errors={errors} />;
       case 3:
-        return <ExtraordinaryCriteriaStep formData={formData} setFormData={setFormData} />;
+        return <ExtraordinaryCriteriaStep formData={formData} setFormData={setFormData} errors={errors} />;
       case 4:
-        return <MalaysiaConnectionStep formData={formData} setFormData={setFormData} />;
+        return <MalaysiaConnectionStep formData={formData} setFormData={setFormData} errors={errors} />;
       case 5:
-        return <FutureIntentionsStep formData={formData} setFormData={setFormData} />;
+        return <FutureIntentionsStep formData={formData} setFormData={setFormData} errors={errors} />;
       default:
         return null;
     }

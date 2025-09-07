@@ -44,7 +44,7 @@ const jobListings = [
     postedDate: '2024-01-18',
     urgent: true,
     featured: true,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-02-28'
   },
   {
@@ -75,7 +75,7 @@ const jobListings = [
     postedDate: '2024-01-15',
     urgent: false,
     featured: true,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-03-15'
   },
   {
@@ -106,7 +106,7 @@ const jobListings = [
     postedDate: '2024-01-12',
     urgent: true,
     featured: false,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-02-20'
   },
   {
@@ -137,7 +137,7 @@ const jobListings = [
     postedDate: '2024-01-10',
     urgent: false,
     featured: false,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-02-25'
   },
   {
@@ -168,7 +168,7 @@ const jobListings = [
     postedDate: '2024-01-08',
     urgent: false,
     featured: false,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-03-10'
   },
   {
@@ -199,7 +199,7 @@ const jobListings = [
     postedDate: '2024-01-05',
     urgent: false,
     featured: false,
-    companyLogo: '/api/placeholder/80/80',
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-02-15'
   }
 ];
@@ -213,7 +213,7 @@ const companies = [
     description: 'Southeast Asia\'s leading super app offering ride-hailing, food delivery, digital payments, and financial services.',
     culture: 'Innovation-driven, diverse, and collaborative environment focused on solving real-world problems.',
     openPositions: 12,
-    logo: '/api/placeholder/120/120',
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
     website: 'https://grab.com/my',
     benefits: ['Equity participation', 'Flexible work', 'Health coverage', 'Learning budget']
   },
@@ -225,7 +225,7 @@ const companies = [
     description: 'Leading ASEAN universal bank providing consumer banking, commercial banking, and investment banking services.',
     culture: 'Professional excellence, customer-centric approach, and commitment to developing local talent.',
     openPositions: 8,
-    logo: '/api/placeholder/120/120',
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
     website: 'https://cimb.com',
     benefits: ['Executive packages', 'International assignments', 'Performance bonuses', 'Executive health']
   },
@@ -237,7 +237,7 @@ const companies = [
     description: 'Multinational conglomerate with businesses in gaming, hospitality, plantations, property development, and cruise lines.',
     culture: 'Entrepreneurial spirit, innovation, and commitment to excellence in customer service.',
     openPositions: 15,
-    logo: '/api/placeholder/120/120',
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
     website: 'https://genting.com',
     benefits: ['Career development', 'Global opportunities', 'Employee discounts', 'Wellness programs']
   },
@@ -249,7 +249,7 @@ const companies = [
     description: 'Malaysia\'s largest private healthcare provider operating 28 hospitals across the country.',
     culture: 'Patient-centered care, medical excellence, and continuous professional development.',
     openPositions: 6,
-    logo: '/api/placeholder/120/120',
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
     website: 'https://kpj.com',
     benefits: ['Medical coverage', 'Research funding', 'Conference allowances', 'Continuing education']
   }

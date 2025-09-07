@@ -49,7 +49,7 @@ For Malaysian diaspora looking to return, the Returning Expert Programme (REP) o
     readingTime: '8 min read',
     category: 'Visa & Immigration',
     tags: ['RP-T', 'TalentCorp', 'Immigration', 'Malaysia'],
-    featuredImage: '/api/placeholder/600/300'
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&crop=center'
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ For Malaysian tech professionals considering a return: the timing has never been
     readingTime: '6 min read',
     category: 'Success Stories',
     tags: ['Tech', 'Silicon Valley', 'Return Migration', 'Fintech'],
-    featuredImage: '/api/placeholder/600/300'
+    featuredImage: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=300&fit=crop&crop=center'
   },
   {
     id: 3,
@@ -144,7 +144,7 @@ For Malaysian finance professionals considering a return, the timing is optimal.
     readingTime: '10 min read',
     category: 'Industry Insights',
     tags: ['Finance', 'Islamic Finance', 'Fintech', 'Banking'],
-    featuredImage: '/api/placeholder/600/300'
+    featuredImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop&crop=center'
   },
   {
     id: 4,
@@ -192,7 +192,7 @@ The time is right for medical professionals to return and contribute to Malaysia
     readingTime: '7 min read',
     category: 'Healthcare',
     tags: ['Healthcare', 'Medical', 'Research', 'Innovation'],
-    featuredImage: '/api/placeholder/600/300'
+    featuredImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop&crop=center'
   },
   {
     id: 5,
@@ -276,7 +276,7 @@ The entrepreneurial ecosystem in Malaysia continues to strengthen, with increasi
     readingTime: '12 min read',
     category: 'Entrepreneurship',
     tags: ['Startups', 'Business', 'Entrepreneurship', 'Funding'],
-    featuredImage: '/api/placeholder/600/300'
+    featuredImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop&crop=center'
   }
 ];
 

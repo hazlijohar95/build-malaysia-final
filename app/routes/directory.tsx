@@ -24,7 +24,7 @@ const profiles = [
     company: 'Google',
     location: 'Kuala Lumpur, Malaysia',
     expertise: ['Machine Learning', 'Cloud Architecture', 'Distributed Systems'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former Meta, graduated from Stanford University',
     verified: true,
     category: 'Technology'
@@ -36,7 +36,7 @@ const profiles = [
     company: 'Goldman Sachs',
     location: 'Singapore',
     expertise: ['Private Equity', 'Venture Capital', 'Financial Analysis'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former McKinsey, Harvard MBA',
     verified: true,
     category: 'Finance'
@@ -48,7 +48,7 @@ const profiles = [
     company: 'Tesla',
     location: 'Austin, Texas',
     expertise: ['Product Strategy', 'Electric Vehicles', 'Manufacturing'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former Apple, MIT graduate',
     verified: true,
     category: 'Technology'
@@ -60,7 +60,7 @@ const profiles = [
     company: 'DeepMind',
     location: 'London, UK',
     expertise: ['Artificial Intelligence', 'Neural Networks', 'Computer Vision'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former OpenAI, PhD from Cambridge',
     verified: true,
     category: 'Research'
@@ -72,7 +72,7 @@ const profiles = [
     company: 'JPMorgan Chase',
     location: 'Hong Kong',
     expertise: ['Investment Banking', 'M&A', 'Capital Markets'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former Goldman Sachs, Wharton MBA',
     verified: true,
     category: 'Finance'
@@ -84,7 +84,7 @@ const profiles = [
     company: 'Pfizer',
     location: 'New York, NY',
     expertise: ['Drug Discovery', 'Biotechnology', 'Clinical Research'],
-    image: '/api/placeholder/150/150',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     background: 'Former Roche, PhD from Oxford',
     verified: true,
     category: 'Healthcare'

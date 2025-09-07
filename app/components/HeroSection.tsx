@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from '@remix-run/react';
 
 const profiles = [
   { 
@@ -95,12 +96,18 @@ export default function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="btn-primary text-base px-8 py-3">
+          <Link 
+            to="/evaluation" 
+            className="btn-primary text-base px-8 py-3 text-center inline-block"
+          >
             Check Eligibility
-          </button>
-          <button className="btn-secondary text-base px-8 py-3">
+          </Link>
+          <Link 
+            to="/directory" 
+            className="btn-secondary text-base px-8 py-3 text-center inline-block"
+          >
             See Who Qualified
-          </button>
+          </Link>
         </div>
       </div>
     </section>
