@@ -11,16 +11,16 @@ const companies = [
 
 export default function CompaniesSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black mb-8 leading-tight tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-8 leading-tight tracking-tight">
             Extraordinary technology companies
             <br />
             are building in Malaysia.
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Across Fintech • E-commerce • Transportation • Travel • Gaming • AI
           </p>
         </div>
@@ -32,8 +32,8 @@ export default function CompaniesSection() {
               key={index}
               className="group"
             >
-              <div className="bg-white rounded-xl p-8 lg:p-12 h-24 lg:h-32 flex items-center justify-center transition-all duration-300 hover:shadow-sm border border-gray-100/50">
-                <div className="text-gray-400 font-medium text-xs lg:text-sm tracking-wider transition-colors group-hover:text-gray-600">
+              <div className="bg-black p-8 lg:p-12 h-24 lg:h-32 flex items-center justify-center transition-all duration-300 hover:shadow-sm border border-white/20">
+                <div className="text-gray-300 font-medium text-xs lg:text-sm tracking-wider transition-colors group-hover:text-white">
                   {company.logo}
                 </div>
               </div>

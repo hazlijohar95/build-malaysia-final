@@ -55,10 +55,10 @@ export default function ProfilesSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-base text-gray-600 mb-4 font-medium tracking-wide uppercase">
+          <p className="text-base text-gray-400 mb-4 font-medium tracking-wide uppercase">
             It allows the world's top 0.1% of talent
           </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight tracking-tight">
             to build extraordinary Malaysia.
           </h2>
         </div>
@@ -70,7 +70,7 @@ export default function ProfilesSection() {
               key={index}
               className="group cursor-pointer text-center"
             >
-              <div className="mb-6 overflow-hidden rounded-full mx-auto">
+              <div className="mb-6 overflow-hidden mx-auto">
                 <img 
                   src={profile.image}
                   alt={profile.name}
@@ -78,13 +78,13 @@ export default function ProfilesSection() {
                 />
               </div>
               <div>
-                <div className="font-medium text-base text-black mb-2">
+                <div className="font-medium text-base text-white mb-2">
                   {profile.name}
                 </div>
-                <div className="text-sm text-gray-700 mb-1 leading-relaxed">
+                <div className="text-sm text-gray-300 mb-1 leading-relaxed">
                   {profile.achievement}
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-400">
                   {profile.location}
                 </div>
               </div>

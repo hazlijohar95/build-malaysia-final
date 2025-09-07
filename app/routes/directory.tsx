@@ -6,335 +6,225 @@ import Footer from '~/components/Footer';
 export const meta: MetaFunction = () => {
   return [
     { title: 'Directory · Build.Malaysia' },
-    { name: 'description', content: 'Discover extraordinary Malaysian professionals who have excelled at world-class companies. Connect with talent that\'s ready to contribute to Malaysia\'s growth.' },
+    { name: 'description', content: 'Search extraordinary Malaysian professionals who have been recognized for their exceptional achievements.' },
     { name: 'keywords', content: 'Malaysia talent directory, professionals, networking, extraordinary talent, Malaysian diaspora' },
     { property: 'og:title', content: 'Directory · Build.Malaysia' },
-    { property: 'og:description', content: 'Discover extraordinary Malaysian professionals who have excelled at world-class companies.' },
+    { property: 'og:description', content: 'Search extraordinary Malaysian professionals who have been recognized for their exceptional achievements.' },
     { name: 'twitter:title', content: 'Directory · Build.Malaysia' },
-    { name: 'twitter:description', content: 'Discover extraordinary Malaysian professionals who have excelled at world-class companies.' },
+    { name: 'twitter:description', content: 'Search extraordinary Malaysian professionals who have been recognized for their exceptional achievements.' },
   ];
 };
 
-// Mock data for profiles
+// Profile data exactly matching reference structure  
 const profiles = [
   {
     id: 1,
     name: 'Ahmad Zafran',
-    title: 'Senior Software Engineer',
-    company: 'Google',
-    location: 'Kuala Lumpur, Malaysia',
-    expertise: ['Machine Learning', 'Cloud Architecture', 'Distributed Systems'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former Meta, graduated from Stanford University',
-    verified: true,
-    category: 'Technology'
+    title: 'CEO, TechMalaysia',
+    fromLocation: 'Kuala Lumpur',
+    toLocation: 'San Francisco, CA',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
+    badges: ['O1A', 'YC', 'Techstars', 'Depict'],
+    tags: ['O-1A', 'Founders']
   },
   {
     id: 2,
-    name: 'Siti Nurhaliza',
-    title: 'Investment Director',
-    company: 'Goldman Sachs',
-    location: 'Singapore',
-    expertise: ['Private Equity', 'Venture Capital', 'Financial Analysis'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former McKinsey, Harvard MBA',
-    verified: true,
-    category: 'Finance'
+    name: 'Arlan Rakhmetzhan',
+    title: 'Founder of Nozomio AI (YC S25)',
+    fromLocation: 'Penang',
+    toLocation: 'San Francisco, CA',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
+    badges: ['O1A', 'YC', 'F', 'N'],
+    tags: ['O-1A', 'Founders']
   },
   {
     id: 3,
-    name: 'David Lim',
-    title: 'Head of Product',
-    company: 'Tesla',
-    location: 'Austin, Texas',
-    expertise: ['Product Strategy', 'Electric Vehicles', 'Manufacturing'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former Apple, MIT graduate',
-    verified: true,
-    category: 'Technology'
+    name: 'Andrej Karpathy',
+    title: 'Co-founder of OpenAI, Tesla, Autopilot',
+    fromLocation: 'Johor',
+    toLocation: 'San Francisco, CA', 
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
+    badges: ['EB1A', 'Tesla', 'OpenAI', 'Stanford'],
+    tags: ['EB-1A', 'Founders']
   },
   {
     id: 4,
-    name: 'Priya Krishnan',
-    title: 'Research Scientist',
-    company: 'DeepMind',
-    location: 'London, UK',
-    expertise: ['Artificial Intelligence', 'Neural Networks', 'Computer Vision'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former OpenAI, PhD from Cambridge',
-    verified: true,
-    category: 'Research'
+    name: 'Sigil Wen',
+    title: 'Founder of Extraordinary',
+    fromLocation: 'Selangor',
+    toLocation: 'San Francisco, CA',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
+    badges: ['O1A', 'EB1A', 'Extraordinary', 'A16z'],
+    tags: ['O-1A', 'EB-1A', 'Founders']
   },
   {
     id: 5,
-    name: 'Marcus Tan',
-    title: 'Managing Director',
-    company: 'JPMorgan Chase',
-    location: 'Hong Kong',
-    expertise: ['Investment Banking', 'M&A', 'Capital Markets'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former Goldman Sachs, Wharton MBA',
-    verified: true,
-    category: 'Finance'
-  },
-  {
-    id: 6,
-    name: 'Dr. Sarah Abdullah',
-    title: 'Principal Scientist',
-    company: 'Pfizer',
-    location: 'New York, NY',
-    expertise: ['Drug Discovery', 'Biotechnology', 'Clinical Research'],
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    background: 'Former Roche, PhD from Oxford',
-    verified: true,
-    category: 'Healthcare'
+    name: 'Guillermo Rauch',
+    title: 'CEO of Vercel',
+    fromLocation: 'Sabah',
+    toLocation: 'San Francisco, CA',
+    image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=80&h=80&fit=crop&crop=face',
+    badges: ['O1A', 'EB1A', 'Vercel', 'Next.js'],
+    tags: ['O-1A', 'EB-1A', 'Software Engineers']
   }
 ];
 
-const categories = ['All', 'Technology', 'Finance', 'Healthcare', 'Research'];
-const locations = ['All Locations', 'Malaysia', 'Singapore', 'USA', 'UK', 'Hong Kong'];
-
-function ProfileCard({ profile }: { profile: typeof profiles[0] }) {
-  return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6 hover:border-gray-200 transition-all duration-300 hover:shadow-lg group">
-      <div className="flex items-start space-x-4">
-        <div className="relative">
-          <img
-            src={profile.image}
-            alt={profile.name}
-            className="w-16 h-16 rounded-full object-cover bg-gray-100"
-          />
-          {profile.verified && (
-            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-black rounded-full flex items-center justify-center">
-              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-            </div>
-          )}
-        </div>
-        
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between">
-            <div>
-              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-black transition-colors">
-                {profile.name}
-              </h3>
-              <p className="text-sm text-gray-600 font-medium">
-                {profile.title}
-              </p>
-              <p className="text-sm text-gray-500">
-                {profile.company}
-              </p>
-            </div>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-              {profile.category}
-            </span>
-          </div>
-          
-          <div className="mt-3">
-            <p className="text-sm text-gray-600 mb-2">{profile.background}</p>
-            <div className="flex items-center text-xs text-gray-500 mb-3">
-              <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              {profile.location}
-            </div>
-            
-            <div className="flex flex-wrap gap-1.5">
-              {profile.expertise.slice(0, 3).map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200"
-                >
-                  {skill}
-                </span>
-              ))}
-              {profile.expertise.length > 3 && (
-                <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-500">
-                  +{profile.expertise.length - 3} more
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div className="mt-6 flex space-x-3">
-        <button className="flex-1 bg-black text-white text-sm font-medium py-2.5 px-4 rounded-lg hover:bg-gray-800 transition-colors duration-200">
-          Connect
-        </button>
-        <button className="px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-          <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-}
+// Filter tags exactly matching reference
+const filterTags = [
+  'O-1A',
+  'Founders', 
+  'Canada',
+  'Members at a16z',
+  'Software Engineers',
+  'Featured in SF Standard'
+];
 
 export default function Directory() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedLocation, setSelectedLocation] = useState('All Locations');
-  const [sortBy, setSortBy] = useState('name');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
-  const filteredAndSortedProfiles = useMemo(() => {
-    let filtered = profiles.filter(profile => {
-      const matchesSearch = profile.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           profile.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           profile.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           profile.expertise.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()));
-      
-      const matchesCategory = selectedCategory === 'All' || profile.category === selectedCategory;
-      
-      const matchesLocation = selectedLocation === 'All Locations' || 
-                             profile.location.includes(selectedLocation === 'USA' ? 'Texas' : selectedLocation);
-      
-      return matchesSearch && matchesCategory && matchesLocation;
+  const toggleFilter = (filter: string) => {
+    setActiveFilters(prev => 
+      prev.includes(filter) 
+        ? prev.filter(f => f !== filter)
+        : [...prev, filter]
+    );
+  };
+
+  const filteredProfiles = useMemo(() => {
+    return profiles.filter(profile => {
+      const matchesSearch = searchQuery === '' || 
+        profile.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        profile.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        profile.fromLocation.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        profile.toLocation.toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesFilters = activeFilters.length === 0 || 
+        activeFilters.every(filter => profile.tags.includes(filter));
+
+      return matchesSearch && matchesFilters;
     });
-
-    // Sort profiles
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'name':
-          return a.name.localeCompare(b.name);
-        case 'company':
-          return a.company.localeCompare(b.company);
-        case 'title':
-          return a.title.localeCompare(b.title);
-        default:
-          return 0;
-      }
-    });
-
-    return filtered;
-  }, [searchQuery, selectedCategory, selectedLocation, sortBy]);
+  }, [searchQuery, activeFilters]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
-      {/* Header */}
-      <div className="pt-24 pb-12 bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl text-balance">
-              Extraordinary Talent Directory
-            </h1>
-            <p className="mt-6 text-xl text-gray-600 text-balance">
-              Connect with Malaysian professionals who have excelled at the world's most prestigious companies and are ready to contribute to Malaysia's growth.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-500">
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-gray-400 rounded-full mr-2"></div>
-                {profiles.length} verified professionals
-              </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-gray-500 rounded-full mr-2"></div>
-                {new Set(profiles.map(p => p.company)).size} top companies represented
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="pt-20 pb-20">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Main Headline - Exactly like reference */}
+          <h1 className="text-6xl font-normal text-white mb-10 leading-tight">
+            Search Extraordinary
+          </h1>
 
-      {/* Filters */}
-      <div className="sticky top-16 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-40">
-        <div className="max-w-7xl mx-auto container-padding py-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          {/* Search Bar - Large white bar exactly like reference */}
+          <div className="mb-8">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
               <input
                 type="text"
-                placeholder="Search professionals..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                className="block w-full h-12 pl-12 pr-4 bg-white border-0 text-gray-900 placeholder-gray-500 focus:ring-0 focus:outline-none text-base"
+                placeholder="Search by profession, location, or organizations"
               />
             </div>
-
-            {/* Filters */}
-            <div className="flex flex-wrap items-center gap-4">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-
-              <select
-                value={selectedLocation}
-                onChange={(e) => setSelectedLocation(e.target.value)}
-                className="border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-              >
-                {locations.map(location => (
-                  <option key={location} value={location}>{location}</option>
-                ))}
-              </select>
-
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
-              >
-                <option value="name">Sort by Name</option>
-                <option value="company">Sort by Company</option>
-                <option value="title">Sort by Title</option>
-              </select>
-            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Results */}
-      <div className="max-w-7xl mx-auto container-padding py-12">
-        <div className="mb-8">
-          <p className="text-sm text-gray-600">
-            Showing {filteredAndSortedProfiles.length} of {profiles.length} professionals
-          </p>
-        </div>
-
-        {filteredAndSortedProfiles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredAndSortedProfiles.map((profile) => (
-              <ProfileCard key={profile.id} profile={profile} />
+          {/* Filter Tags - White buttons exactly like reference */}
+          <div className="flex flex-wrap gap-3 mb-8">
+            {filterTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => toggleFilter(tag)}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  activeFilters.includes(tag)
+                    ? 'bg-gray-600 text-white'
+                    : 'bg-white text-black hover:bg-gray-100'
+                }`}
+              >
+                {tag}
+              </button>
             ))}
           </div>
-        ) : (
-          <div className="text-center py-12">
-            <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">No professionals found</h3>
-            <p className="mt-2 text-gray-500">Try adjusting your search criteria or filters.</p>
-          </div>
-        )}
-      </div>
 
-      {/* CTA Section */}
-      <div className="bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto container-padding py-16">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900">Want to join our directory?</h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-              If you're an extraordinary professional with ties to Malaysia, we'd love to have you in our network.
-            </p>
-            <button className="mt-8 btn-primary">
-              Apply to Join
-            </button>
+          {/* Profile Grid - 3 columns exactly like reference */}
+          <div className="grid grid-cols-3 gap-1 border border-gray-500">
+            {filteredProfiles.map((profile, index) => (
+              <div
+                key={profile.id}
+                className={`bg-black p-6 hover:bg-gray-950 transition-colors cursor-pointer group ${
+                  index % 3 !== 2 ? 'border-r border-gray-500' : ''
+                } ${
+                  Math.floor(index / 3) !== Math.floor((filteredProfiles.length - 1) / 3) ? 'border-b border-gray-500' : ''
+                }`}
+              >
+                {/* Profile Content - Exactly matching reference layout */}
+                <div className="flex items-start gap-4">
+                  {/* Profile Image */}
+                  <img
+                    src={profile.image}
+                    alt={profile.name}
+                    className="w-16 h-16 object-cover flex-shrink-0 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                  
+                  {/* Profile Info */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-semibold text-white mb-1 leading-tight">
+                      {profile.name}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-2">
+                      {profile.title}
+                    </p>
+                    <p className="text-gray-400 text-sm mb-4">
+                      {profile.fromLocation} → {profile.toLocation}
+                    </p>
+                    
+                    {/* Badges Row - Exactly like reference */}
+                    <div className="flex flex-wrap gap-1">
+                      {profile.badges.map((badge, badgeIndex) => (
+                        <div
+                          key={badgeIndex}
+                          className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium ${
+                            badge === 'O1A' || badge === 'EB1A' 
+                              ? 'bg-gray-700 text-gray-300 border border-gray-600' 
+                              : 'bg-gray-700 text-white border border-gray-600'
+                          }`}
+                        >
+                          {badge}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+
+          {/* No Results */}
+          {filteredProfiles.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-gray-400 text-lg">
+                No profiles match your search criteria.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setActiveFilters([]);
+                }}
+                className="mt-4 text-white hover:text-gray-300 underline"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
         </div>
       </div>
-
+      
       <Footer />
     </div>
   );

@@ -17,8 +17,8 @@ export default function App() {
         <Links />
         <title>Extraordinary Malaysia - Bringing World-Class Talent Home</title>
       </head>
-      <body className="h-full bg-white text-black antialiased">
-        <div className="min-h-screen bg-white">
+      <body className="h-full bg-black text-white antialiased">
+        <div className="min-h-screen bg-black">
           <Outlet />
         </div>
         <ScrollRestoration />

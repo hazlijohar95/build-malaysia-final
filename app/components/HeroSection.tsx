@@ -1,96 +1,69 @@
-import { useState, useEffect } from 'react';
 import { Link } from '@remix-run/react';
 
 const profiles = [
   { 
     name: "Ahmad Rahman", 
-    subtitle: "Built ML platform serving 50M+ users", 
-    country: "from Malaysia", 
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+    achievement: "10M+ Followers on LinkedIn", 
+    description: "Building Malaysia's AI future", 
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face"
   },
   { 
     name: "Siti Nurhaliza", 
-    subtitle: "Led $100M product at scale", 
-    country: "from Malaysia",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b512d0b7?w=80&h=80&fit=crop&crop=face"
+    achievement: "Listed as 30 under 30 most inspiring by Forbes Asia", 
+    description: "Leading fintech revolution",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b512d0b7?w=400&h=600&fit=crop&crop=face"
   },
   { 
     name: "Raj Kumar", 
-    subtitle: "Founded unicorn startup", 
-    country: "from Malaysia",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+    achievement: "Malaysia's Youngest Unicorn Founder", 
+    description: "Transforming Southeast Asia",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop&crop=face"
   },
   { 
     name: "Michelle Tan", 
-    subtitle: "Pioneered quantum algorithms", 
-    country: "from Malaysia",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face"
+    achievement: "Stanford Research Scholar", 
+    description: "Quantum computing pioneer",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop&crop=face"
   },
 ];
 
 export default function HeroSection() {
-  const [currentProfile, setCurrentProfile] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProfile((prev) => (prev + 1) % profiles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-4xl mx-auto">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Main Headline */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-black mb-16 leading-tight tracking-tight">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white mb-16 leading-tight tracking-tight text-center">
           We bring extraordinary
           <br />
           talent to Malaysia.
         </h1>
 
-        {/* Profile Carousel */}
-        <div className="mb-20 h-32 flex items-center justify-center">
-          <div className="relative w-full max-w-lg">
-            {profiles.map((profile, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                  index === currentProfile 
-                    ? 'opacity-100 transform translate-y-0' 
-                    : 'opacity-0 transform translate-y-6'
-                }`}
-              >
-                <div className="flex items-center justify-center gap-6">
-                  <div className="flex-shrink-0">
-                    <img 
-                      src={profile.image}
-                      alt={profile.name}
-                      className="w-20 h-20 rounded-full object-cover shadow-sm"
-                    />
-                  </div>
-                  <div className="text-left">
-                    <div className="text-lg font-medium text-black mb-1">{profile.name}</div>
-                    <div className="text-base text-gray-700 mb-1">{profile.subtitle}</div>
-                    <div className="text-sm text-gray-500">{profile.country}</div>
-                  </div>
+        {/* Profile Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {profiles.map((profile, index) => (
+            <div
+              key={index}
+              className="relative h-96 overflow-hidden group cursor-pointer"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${profile.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <div className="absolute inset-0 p-6 flex flex-col justify-start">
+                <div className="text-white">
+                  <h3 className="text-lg font-medium mb-2 leading-tight">
+                    {profile.achievement}
+                  </h3>
+                  <p className="text-sm opacity-90 mb-2">
+                    {profile.description}
+                  </p>
+                  <p className="text-xs opacity-75">
+                    {profile.name}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Carousel Dots */}
-        <div className="flex justify-center gap-2 mb-16">
-          {profiles.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentProfile(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === currentProfile 
-                  ? 'bg-black w-8' 
-                  : 'bg-gray-300 w-1.5'
-              }`}
-            />
+            </div>
           ))}
         </div>
 

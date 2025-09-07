@@ -9,7 +9,7 @@ export default function Logo({ className = "", linkToHome = true }: LogoProps) {
   const logoContent = (
     <div className={`inline-flex items-baseline ${className}`}>
       <span 
-        className="text-xl font-bold tracking-tight text-black"
+        className="text-xl font-bold tracking-tight text-white"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontWeight: 700,
@@ -18,9 +18,9 @@ export default function Logo({ className = "", linkToHome = true }: LogoProps) {
       >
         Build
       </span>
-      <span className="text-xl text-black">.</span>
+      <span className="text-xl text-white">.</span>
       <span 
-        className="text-xl font-normal tracking-tight text-black"
+        className="text-xl font-normal tracking-tight text-white"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontWeight: 400,
@@ -52,7 +52,7 @@ export function LogoLarge({ className = "", linkToHome = true }: LogoProps) {
   const logoContent = (
     <div className={`inline-flex items-baseline ${className}`}>
       <span 
-        className="text-4xl font-bold tracking-tight text-black"
+        className="text-4xl font-bold tracking-tight text-white"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontWeight: 700,
@@ -61,9 +61,9 @@ export function LogoLarge({ className = "", linkToHome = true }: LogoProps) {
       >
         Build
       </span>
-      <span className="text-4xl text-black">.</span>
+      <span className="text-4xl text-white">.</span>
       <span 
-        className="text-4xl font-normal tracking-tight text-black"
+        className="text-4xl font-normal tracking-tight text-white"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           fontWeight: 400,

@@ -285,7 +285,7 @@ const categories = ['All', 'Visa & Immigration', 'Success Stories', 'Industry In
 function BlogCard({ post, featured = false }: { post: typeof blogPosts[0]; featured?: boolean }) {
   if (featured) {
     return (
-      <article className="relative bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 transition-all duration-300 hover:shadow-lg group">
+      <article className="relative bg-black  border border-white overflow-hidden hover:border-gray-300 transition-all duration-300 hover:shadow-lg group">
         <div className="aspect-[2/1] overflow-hidden">
           <img
             src={post.featuredImage}
@@ -295,17 +295,17 @@ function BlogCard({ post, featured = false }: { post: typeof blogPosts[0]; featu
         </div>
         <div className="p-8">
           <div className="flex items-center space-x-4 mb-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-black text-white">
+            <span className="inline-flex items-center px-3 py-1  text-xs font-medium bg-white text-black">
               {post.category}
             </span>
-            <span className="text-sm text-gray-500">{post.readingTime}</span>
+            <span className="text-sm text-gray-400">{post.readingTime}</span>
           </div>
           
-          <h2 className="text-2xl font-bold text-gray-900 group-hover:text-black transition-colors mb-4 line-clamp-2">
+          <h2 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors mb-4 line-clamp-2">
             {post.title}
           </h2>
           
-          <p className="text-gray-600 mb-6 line-clamp-3">
+          <p className="text-gray-300 mb-6 line-clamp-3">
             {post.excerpt}
           </p>
           
@@ -314,14 +314,14 @@ function BlogCard({ post, featured = false }: { post: typeof blogPosts[0]; featu
               <img
                 src={post.authorImage}
                 alt={post.author}
-                className="w-10 h-10 rounded-full object-cover"
+                className="w-10 h-10  object-cover"
               />
               <div>
-                <p className="text-sm font-medium text-gray-900">{post.author}</p>
-                <p className="text-xs text-gray-500">{post.authorTitle}</p>
+                <p className="text-sm font-medium text-white">{post.author}</p>
+                <p className="text-xs text-gray-400">{post.authorTitle}</p>
               </div>
             </div>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-400">
               {new Date(post.publishedAt).toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 
@@ -335,19 +335,19 @@ function BlogCard({ post, featured = false }: { post: typeof blogPosts[0]; featu
   }
 
   return (
-    <article className="bg-white rounded-2xl border border-gray-100 p-6 hover:border-gray-200 transition-all duration-300 hover:shadow-lg group">
+    <article className="bg-black  border border-white p-6 hover:border-gray-300 transition-all duration-300 hover:shadow-lg group">
       <div className="flex items-center space-x-4 mb-4">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+        <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-white text-black">
           {post.category}
         </span>
-        <span className="text-sm text-gray-500">{post.readingTime}</span>
+        <span className="text-sm text-gray-400">{post.readingTime}</span>
       </div>
       
-      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors mb-3 line-clamp-2">
+      <h3 className="text-lg font-semibold text-white group-hover:text-gray-300 transition-colors mb-3 line-clamp-2">
         {post.title}
       </h3>
       
-      <p className="text-gray-600 mb-4 line-clamp-2 text-sm">
+      <p className="text-gray-300 mb-4 line-clamp-2 text-sm">
         {post.excerpt}
       </p>
       
@@ -356,14 +356,14 @@ function BlogCard({ post, featured = false }: { post: typeof blogPosts[0]; featu
           <img
             src={post.authorImage}
             alt={post.author}
-            className="w-8 h-8 rounded-full object-cover"
+            className="w-8 h-8  object-cover"
           />
           <div>
-            <p className="text-xs font-medium text-gray-900">{post.author}</p>
-            <p className="text-xs text-gray-500">{post.authorTitle}</p>
+            <p className="text-xs font-medium text-white">{post.author}</p>
+            <p className="text-xs text-gray-400">{post.authorTitle}</p>
           </div>
         </div>
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-gray-400">
           {new Date(post.publishedAt).toLocaleDateString('en-US', { 
             month: 'short', 
             day: 'numeric' 
@@ -391,17 +391,17 @@ export default function Blog() {
   const regularPosts = filteredPosts.slice(1);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
       {/* Header */}
-      <div className="pt-24 pb-16 bg-gray-50 border-b border-gray-100">
+      <div className="pt-24 pb-16 bg-black border-b border-white/20">
         <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Insights & Stories
             </h1>
-            <p className="mt-6 text-xl text-gray-600 text-balance">
+            <p className="mt-6 text-xl text-gray-300 text-balance">
               Expert insights on Malaysian talent acquisition, career development, and success stories from extraordinary professionals who are building Malaysia's future.
             </p>
           </div>
@@ -423,7 +423,7 @@ export default function Blog() {
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+              className="block w-full pl-10 pr-3 py-3 border border-white bg-black text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
             />
           </div>
 
@@ -433,10 +433,10 @@ export default function Blog() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2  text-sm font-medium transition-colors duration-200 ${
                   selectedCategory === category
-                    ? 'bg-black text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-white text-black'
+                    : 'bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-700'
                 }`}
               >
                 {category}
@@ -453,7 +453,7 @@ export default function Blog() {
             {/* Featured Post */}
             {featuredPost && (
               <div className="mb-16">
-                <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Article</h2>
+                <h2 className="text-2xl font-bold text-white mb-8">Featured Article</h2>
                 <BlogCard post={featuredPost} featured={true} />
               </div>
             )}
@@ -461,7 +461,7 @@ export default function Blog() {
             {/* Regular Posts */}
             {regularPosts.length > 0 && (
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+                <h2 className="text-2xl font-bold text-white mb-8">Latest Articles</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {regularPosts.map((post) => (
                     <BlogCard key={post.id} post={post} />
@@ -475,31 +475,31 @@ export default function Blog() {
             <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
             </svg>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">No articles found</h3>
-            <p className="mt-2 text-gray-500">Try adjusting your search criteria or category filter.</p>
+            <h3 className="mt-4 text-lg font-medium text-white">No articles found</h3>
+            <p className="mt-2 text-gray-400">Try adjusting your search criteria or category filter.</p>
           </div>
         )}
       </div>
 
       {/* Newsletter Signup */}
-      <div className="bg-gray-50 border-t border-gray-100">
+      <div className="bg-gray-900 border-t border-white/20">
         <div className="max-w-7xl mx-auto container-padding py-16">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900">Stay Updated</h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-white">Stay Updated</h2>
+            <p className="mt-4 text-lg text-gray-300">
               Get the latest insights on Malaysian talent trends and career opportunities delivered to your inbox.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-l-lg sm:rounded-r-none rounded-r-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                className="flex-1 px-4 py-3 border border-white bg-black text-white placeholder-gray-400 sm: focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               />
-              <button className="mt-3 sm:mt-0 btn-primary rounded-l-none">
+              <button className="mt-3 sm:mt-0 btn-primary ">
                 Subscribe
               </button>
             </div>
-            <p className="mt-3 text-sm text-gray-500">
+            <p className="mt-3 text-sm text-gray-400">
               We respect your privacy. Unsubscribe at any time.
             </p>
           </div>

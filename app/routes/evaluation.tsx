@@ -8,38 +8,6 @@ interface FormErrors {
   [key: string]: string;
 }
 
-interface FormData {
-  // Step 1: Personal Information
-  fullName: string;
-  email: string;
-  phone: string;
-  location: string;
-  nationality: string;
-  
-  // Step 2: Professional Background
-  jobTitle: string;
-  currentCompany: string;
-  
-  // Step 3: Qualifications & Experience
-  education: string;
-  linkedinUrl: string;
-  
-  // Step 4: Achievements & Recognition
-  achievements: string;
-  awards: string;
-  publications: string;
-  innovations: string;
-  leadership: string;
-  
-  // Step 5: Contribution Potential
-  publicProfile: string;
-  malaysianConnection: string;
-  malaysianExperience: string;
-  contributionPlan: string;
-  roleInterests: string;
-  sectorInterests: string;
-  futureVision: string;
-}
 
 // Validation functions
 const validateEmail = (email: string): boolean => {
@@ -65,7 +33,7 @@ const validateRequired = (value: string, minLength: number = 1): boolean => {
   return value.trim().length >= minLength;
 };
 
-const validateForm = (data: FormData, currentStep: number): FormErrors => {
+const validateForm = (data: EvaluationFormData, currentStep: number): FormErrors => {
   const errors: FormErrors = {};
 
   if (currentStep >= 1) {
@@ -78,8 +46,8 @@ const validateForm = (data: FormData, currentStep: number): FormErrors => {
     if (!validateRequired(data.phone) || !validatePhone(data.phone)) {
       errors.phone = 'Please enter a valid phone number';
     }
-    if (!validateRequired(data.location, 3)) {
-      errors.location = 'Location is required (minimum 3 characters)';
+    if (!validateRequired(data.currentLocation, 3)) {
+      errors.currentLocation = 'Location is required (minimum 3 characters)';
     }
     if (!validateRequired(data.nationality, 2)) {
       errors.nationality = 'Nationality is required';
@@ -87,8 +55,8 @@ const validateForm = (data: FormData, currentStep: number): FormErrors => {
   }
 
   if (currentStep >= 2) {
-    if (!validateRequired(data.jobTitle, 3)) {
-      errors.jobTitle = 'Job title is required (minimum 3 characters)';
+    if (!validateRequired(data.currentRole, 3)) {
+      errors.currentRole = 'Current role is required (minimum 3 characters)';
     }
     if (!validateRequired(data.currentCompany, 2)) {
       errors.currentCompany = 'Current company is required';
@@ -99,8 +67,8 @@ const validateForm = (data: FormData, currentStep: number): FormErrors => {
     if (!validateRequired(data.education, 10)) {
       errors.education = 'Education details are required (minimum 10 characters)';
     }
-    if (!validateRequired(data.linkedinUrl) || !validateUrl(data.linkedinUrl)) {
-      errors.linkedinUrl = 'Please enter a valid LinkedIn URL';
+    if (!validateRequired(data.linkedinProfile) || !validateUrl(data.linkedinProfile)) {
+      errors.linkedinProfile = 'Please enter a valid LinkedIn URL';
     }
   }
 
@@ -111,20 +79,17 @@ const validateForm = (data: FormData, currentStep: number): FormErrors => {
   }
 
   if (currentStep >= 5) {
-    if (!validateRequired(data.malaysianConnection, 20)) {
-      errors.malaysianConnection = 'Please explain your connection to Malaysia (minimum 20 characters)';
+    if (!validateRequired(data.culturalContribution, 20)) {
+      errors.culturalContribution = 'Please explain your connection to Malaysia (minimum 20 characters)';
     }
-    if (!validateRequired(data.contributionPlan, 30)) {
-      errors.contributionPlan = 'Please describe how you plan to contribute (minimum 30 characters)';
+    if (!validateRequired(data.contributionAreas, 30)) {
+      errors.contributionAreas = 'Please describe how you plan to contribute (minimum 30 characters)';
     }
-    if (!validateRequired(data.roleInterests, 10)) {
-      errors.roleInterests = 'Please describe your role interests (minimum 10 characters)';
+    if (!validateRequired(data.interestedRoles, 10)) {
+      errors.interestedRoles = 'Please describe your role interests (minimum 10 characters)';
     }
-    if (!validateRequired(data.sectorInterests, 10)) {
-      errors.sectorInterests = 'Please specify your sector interests (minimum 10 characters)';
-    }
-    if (!validateRequired(data.futureVision, 30)) {
-      errors.futureVision = 'Please describe your future vision (minimum 30 characters)';
+    if (!validateRequired(data.longTermGoals, 30)) {
+      errors.longTermGoals = 'Please describe your future vision (minimum 30 characters)';
     }
   }
 
@@ -171,7 +136,7 @@ const steps = [
   }
 ];
 
-interface FormData {
+interface EvaluationFormData {
   // Personal Information
   fullName: string;
   email: string;
@@ -209,7 +174,7 @@ interface FormData {
   longTermGoals: string;
 }
 
-const initialFormData: FormData = {
+const initialFormData: EvaluationFormData = {
   fullName: '',
   email: '',
   phone: '',
@@ -288,7 +253,7 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
       <div className="flex items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
-            <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 text-sm font-medium ${
+            <div className={`flex items-center justify-center w-10 h-10 border-2 text-sm font-medium ${
               index + 1 < currentStep
                 ? 'bg-black border-black text-white'
                 : index + 1 === currentStep
@@ -312,16 +277,16 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
         ))}
       </div>
       <div className="mt-4 text-center">
-        <h2 className="text-2xl font-bold text-gray-900">{steps[currentStep - 1].title}</h2>
-        <p className="text-gray-600 mt-1">{steps[currentStep - 1].description}</p>
+        <h2 className="text-2xl font-bold text-white">{steps[currentStep - 1].title}</h2>
+        <p className="text-gray-300 mt-1">{steps[currentStep - 1].description}</p>
       </div>
     </div>
   );
 }
 
 function PersonalInformationStep({ formData, setFormData, errors = {} }: { 
-  formData: FormData; 
-  setFormData: (data: FormData) => void; 
+  formData: EvaluationFormData; 
+  setFormData: (data: EvaluationFormData) => void; 
   errors?: FormErrors;
 }) {
   return (
@@ -336,7 +301,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="fullName"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
               errors.fullName ? 'border-red-500 bg-red-50' : 'border-gray-300'
             }`}
             placeholder="Enter your full name"
@@ -356,7 +321,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
               errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
             }`}
             placeholder="your@email.com"
@@ -378,7 +343,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="phone"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
+            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
               errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
             }`}
             placeholder="+60 12 345 6789"
@@ -398,7 +363,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="currentLocation"
             value={formData.currentLocation}
             onChange={(e) => setFormData({ ...formData, currentLocation: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="City, Country"
             required
           />
@@ -415,7 +380,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="nationality"
             value={formData.nationality}
             onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="Malaysian, American, etc."
             required
           />
@@ -429,7 +394,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="malaysianConnection"
             value={formData.malaysianConnection}
             onChange={(e) => setFormData({ ...formData, malaysianConnection: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           >
             <option value="">Select connection type</option>
             {connectionTypes.map((type) => (
@@ -442,9 +407,10 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
   );
 }
 
-function ProfessionalBackgroundStep({ formData, setFormData }: { 
-  formData: FormData; 
-  setFormData: (data: FormData) => void; 
+function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: { 
+  formData: EvaluationFormData; 
+  setFormData: (data: EvaluationFormData) => void; 
+  errors?: FormErrors;
 }) {
   return (
     <div className="space-y-6">
@@ -458,7 +424,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
             id="currentRole"
             value={formData.currentRole}
             onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="e.g., Senior Software Engineer"
             required
           />
@@ -473,7 +439,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
             id="currentCompany"
             value={formData.currentCompany}
             onChange={(e) => setFormData({ ...formData, currentCompany: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="e.g., Google, Microsoft, Goldman Sachs"
             required
           />
@@ -489,7 +455,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
             id="industry"
             value={formData.industry}
             onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             required
           >
             <option value="">Select your industry</option>
@@ -507,7 +473,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
             id="experienceYears"
             value={formData.experienceYears}
             onChange={(e) => setFormData({ ...formData, experienceYears: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             required
           >
             <option value="">Select experience range</option>
@@ -527,7 +493,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
           value={formData.education}
           onChange={(e) => setFormData({ ...formData, education: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="e.g., MBA from Harvard Business School, BS Computer Science from Stanford"
           required
         />
@@ -542,7 +508,7 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
           id="linkedinProfile"
           value={formData.linkedinProfile}
           onChange={(e) => setFormData({ ...formData, linkedinProfile: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="https://linkedin.com/in/yourprofile"
         />
       </div>
@@ -550,13 +516,14 @@ function ProfessionalBackgroundStep({ formData, setFormData }: {
   );
 }
 
-function ExtraordinaryCriteriaStep({ formData, setFormData }: { 
-  formData: FormData; 
-  setFormData: (data: FormData) => void; 
+function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: { 
+  formData: EvaluationFormData; 
+  setFormData: (data: EvaluationFormData) => void; 
+  errors?: FormErrors;
 }) {
   return (
     <div className="space-y-6">
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+      <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">What makes you extraordinary?</h3>
         <p className="text-sm text-gray-700">
           Share your exceptional achievements, recognition, and contributions that set you apart from your peers. 
@@ -573,7 +540,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
           value={formData.achievements}
           onChange={(e) => setFormData({ ...formData, achievements: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Describe your most significant professional accomplishments, including quantifiable results where possible"
           required
         />
@@ -589,7 +556,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
             value={formData.awards}
             onChange={(e) => setFormData({ ...formData, awards: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="List any awards, honors, or formal recognition you've received"
           />
         </div>
@@ -603,7 +570,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
             value={formData.publications}
             onChange={(e) => setFormData({ ...formData, publications: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="Academic papers, articles, research contributions, etc."
           />
         </div>
@@ -619,7 +586,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
             value={formData.patents}
             onChange={(e) => setFormData({ ...formData, patents: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="Patents held, innovations created, or technical breakthroughs"
           />
         </div>
@@ -633,7 +600,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
             value={formData.leadership}
             onChange={(e) => setFormData({ ...formData, leadership: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
             placeholder="Significant leadership positions, team sizes managed, etc."
           />
         </div>
@@ -648,7 +615,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
           value={formData.mediaRecognition}
           onChange={(e) => setFormData({ ...formData, mediaRecognition: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Media appearances, conference speaking, thought leadership, etc."
         />
       </div>
@@ -656,13 +623,14 @@ function ExtraordinaryCriteriaStep({ formData, setFormData }: {
   );
 }
 
-function MalaysiaConnectionStep({ formData, setFormData }: { 
-  formData: FormData; 
-  setFormData: (data: FormData) => void; 
+function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: { 
+  formData: EvaluationFormData; 
+  setFormData: (data: EvaluationFormData) => void; 
+  errors?: FormErrors;
 }) {
   return (
     <div className="space-y-6">
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+      <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">Your Malaysia Story</h3>
         <p className="text-sm text-gray-700">
           Help us understand your relationship with Malaysia and how you plan to contribute to the country's development.
@@ -677,7 +645,7 @@ function MalaysiaConnectionStep({ formData, setFormData }: {
           id="connectionType"
           value={formData.connectionType}
           onChange={(e) => setFormData({ ...formData, connectionType: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           required
         >
           <option value="">Select your connection to Malaysia</option>
@@ -696,7 +664,7 @@ function MalaysiaConnectionStep({ formData, setFormData }: {
           value={formData.familyTies}
           onChange={(e) => setFormData({ ...formData, familyTies: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Describe your family connections, personal ties, or emotional connection to Malaysia"
         />
       </div>
@@ -710,7 +678,7 @@ function MalaysiaConnectionStep({ formData, setFormData }: {
           value={formData.previousExperience}
           onChange={(e) => setFormData({ ...formData, previousExperience: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Any previous work, study, or significant experience in Malaysia"
         />
       </div>
@@ -724,7 +692,7 @@ function MalaysiaConnectionStep({ formData, setFormData }: {
           value={formData.culturalContribution}
           onChange={(e) => setFormData({ ...formData, culturalContribution: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="How do you plan to contribute to Malaysia's cultural, social, or economic development? What unique value can you bring?"
           required
         />
@@ -733,13 +701,14 @@ function MalaysiaConnectionStep({ formData, setFormData }: {
   );
 }
 
-function FutureIntentionsStep({ formData, setFormData }: { 
-  formData: FormData; 
-  setFormData: (data: FormData) => void; 
+function FutureIntentionsStep({ formData, setFormData, errors = {} }: { 
+  formData: EvaluationFormData; 
+  setFormData: (data: EvaluationFormData) => void; 
+  errors?: FormErrors;
 }) {
   return (
     <div className="space-y-6">
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+      <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">Your Malaysia Future</h3>
         <p className="text-sm text-gray-700">
           Share your vision for how you'll contribute to Malaysia's growth and development.
@@ -754,7 +723,7 @@ function FutureIntentionsStep({ formData, setFormData }: {
           id="returnTimeframe"
           value={formData.returnTimeframe}
           onChange={(e) => setFormData({ ...formData, returnTimeframe: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           required
         >
           <option value="">Select your timeframe</option>
@@ -773,7 +742,7 @@ function FutureIntentionsStep({ formData, setFormData }: {
           value={formData.interestedRoles}
           onChange={(e) => setFormData({ ...formData, interestedRoles: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="What types of roles, opportunities, or positions interest you in Malaysia?"
           required
         />
@@ -788,7 +757,7 @@ function FutureIntentionsStep({ formData, setFormData }: {
           value={formData.contributionAreas}
           onChange={(e) => setFormData({ ...formData, contributionAreas: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Which sectors or areas would you like to contribute to? (e.g., technology innovation, financial services, healthcare, education, policy)"
           required
         />
@@ -803,7 +772,7 @@ function FutureIntentionsStep({ formData, setFormData }: {
           value={formData.longTermGoals}
           onChange={(e) => setFormData({ ...formData, longTermGoals: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
           placeholder="Describe your long-term goals and vision for your contribution to Malaysia's development"
           required
         />
@@ -814,7 +783,7 @@ function FutureIntentionsStep({ formData, setFormData }: {
 
 export default function Evaluation() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<EvaluationFormData>(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isValidating, setIsValidating] = useState(false);
@@ -847,7 +816,8 @@ export default function Evaluation() {
     
     if (Object.keys(finalErrors).length === 0) {
       // Here you would normally send the data to your backend
-      console.log('Form submitted successfully:', formData);
+      // TODO: Implement actual form submission to backend API
+      // await submitEvaluationForm(formData);
       setIsSubmitted(true);
     } else {
       // If there are errors, go to the first step with errors
@@ -881,12 +851,12 @@ export default function Evaluation() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-black">
         <Navigation />
         <div className="pt-24 pb-16">
           <div className="max-w-3xl mx-auto container-padding text-center">
-            <div className="bg-gray-50 rounded-2xl p-12">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="bg-gray-50  p-12">
+              <div className="w-16 h-16 bg-black  flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -897,7 +867,7 @@ export default function Evaluation() {
               <p className="text-lg text-gray-600 mb-6">
                 Thank you for completing the Build.Malaysia talent evaluation. Our team will review your submission and contact you within 5-7 business days.
               </p>
-              <div className="bg-white rounded-lg p-6 mb-6 text-left">
+              <div className="bg-white  p-6 mb-6 text-left">
                 <h3 className="font-semibold text-gray-900 mb-4">What happens next?</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start">
@@ -936,21 +906,21 @@ export default function Evaluation() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
       {/* Header */}
-      <div className="pt-24 pb-12 bg-gray-50 border-b border-gray-100">
+      <div className="pt-24 pb-12 bg-black border-b border-white/20">
         <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Talent Evaluation
             </h1>
-            <p className="mt-6 text-xl text-gray-600 text-balance">
+            <p className="mt-6 text-xl text-gray-300 text-balance">
               Discover if you qualify as extraordinary talent for Malaysia's premier professional network. 
               This comprehensive assessment helps us understand your background and potential contribution to Malaysia.
             </p>
-            <div className="mt-8 text-sm text-gray-500">
+            <div className="mt-8 text-sm text-gray-400">
               <span>Estimated time: 10-15 minutes</span> • <span>All information is confidential</span>
             </div>
           </div>
@@ -962,14 +932,14 @@ export default function Evaluation() {
         <div className="max-w-4xl mx-auto container-padding">
           <StepIndicator currentStep={currentStep} totalSteps={steps.length} />
           
-          <div className="bg-white border border-gray-200 rounded-2xl p-8">
+          <div className="bg-white border border-gray-200  p-8">
             {renderCurrentStep()}
             
             <div className="flex justify-between mt-8 pt-6 border-t border-gray-100">
               <button
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
-                className={`px-6 py-3 rounded-lg font-medium transition-colors duration-200 ${
+                className={`px-6 py-3  font-medium transition-colors duration-200 ${
                   currentStep === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

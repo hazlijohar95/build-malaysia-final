@@ -264,19 +264,19 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
   const daysAgo = Math.floor((new Date().getTime() - new Date(job.postedDate).getTime()) / (1000 * 60 * 60 * 24));
   
   return (
-    <div className={`bg-white rounded-2xl border-2 p-6 transition-all duration-300 hover:shadow-lg group ${
+    <div className={`bg-white  border-2 p-6 transition-all duration-300 hover:shadow-lg group ${
       job.featured ? 'border-gray-300 shadow-sm' : 'border-gray-100 hover:border-gray-200'
     }`}>
       {job.featured && (
         <div className="flex items-center mb-4">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+          <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800">
             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             Featured
           </span>
           {job.urgent && (
-            <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+            <span className="ml-2 inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800">
               Urgent Hiring
             </span>
           )}
@@ -288,7 +288,7 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
           <img
             src={job.companyLogo}
             alt={job.company}
-            className="w-12 h-12 rounded-lg object-cover bg-gray-100 flex-shrink-0"
+            className="w-12 h-12  object-cover bg-gray-100 flex-shrink-0"
           />
           <div className="min-w-0 flex-1">
             <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors mb-1">
@@ -330,13 +330,13 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
         {job.skills.slice(0, 4).map((skill) => (
           <span
             key={skill}
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+            className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800"
           >
             {skill}
           </span>
         ))}
         {job.skills.length > 4 && (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+          <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-600">
             +{job.skills.length - 4} more
           </span>
         )}
@@ -351,10 +351,10 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
         </div>
         
         <div className="flex space-x-2">
-          <button className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+          <button className="px-4 py-2 border border-gray-300  text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200">
             Save
           </button>
-          <button className="px-6 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
+          <button className="px-6 py-2 bg-black text-white  text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
             Apply Now
           </button>
         </div>
@@ -365,12 +365,12 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
 
 function CompanyCard({ company }: { company: typeof companies[0] }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+    <div className="bg-white  border border-gray-200 p-6 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
       <div className="flex items-start space-x-4 mb-6">
         <img
           src={company.logo}
           alt={company.name}
-          className="w-16 h-16 rounded-xl object-cover bg-gray-100"
+          className="w-16 h-16  object-cover bg-gray-100"
         />
         <div className="flex-1">
           <h3 className="text-xl font-semibold text-gray-900 mb-1">{company.name}</h3>
@@ -388,7 +388,7 @@ function CompanyCard({ company }: { company: typeof companies[0] }) {
         {company.benefits.map((benefit) => (
           <span
             key={benefit}
-            className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-700"
+            className="inline-flex items-center px-2 py-1  text-xs font-medium bg-gray-100 text-gray-700"
           >
             {benefit}
           </span>
@@ -404,11 +404,11 @@ function CompanyCard({ company }: { company: typeof companies[0] }) {
             href={company.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+            className="px-4 py-2 border border-gray-300  text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200"
           >
             Visit Website
           </a>
-          <button className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
+          <button className="px-4 py-2 bg-black text-white  text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
             View Jobs
           </button>
         </div>
@@ -447,34 +447,34 @@ export default function Hiring() {
   const regularJobs = filteredJobs.filter(job => !job.featured);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navigation />
       
       {/* Header */}
-      <div className="pt-24 pb-16 bg-gray-50">
+      <div className="pt-24 pb-16 bg-black">
         <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl text-balance">
+            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
               Extraordinary Opportunities
-              <span className="block text-gray-600">
+              <span className="block text-gray-300">
                 Await in Malaysia
               </span>
             </h1>
-            <p className="mt-6 text-xl text-gray-600 text-balance">
+            <p className="mt-6 text-xl text-gray-300 text-balance">
               Discover career-defining opportunities with Malaysia's leading companies. 
               Join organizations that are shaping the future of business in Southeast Asia.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-500">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
               <div className="flex items-center">
-                <div className="w-2 h-2 bg-gray-400 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-white  mr-2"></div>
                 {jobListings.length} active positions
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 bg-gray-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-gray-300  mr-2"></div>
                 {companies.length} hiring companies
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 bg-gray-600 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-gray-400  mr-2"></div>
                 Average salary: RM 150K - 400K
               </div>
             </div>
@@ -483,15 +483,15 @@ export default function Hiring() {
       </div>
 
       {/* Tab Navigation */}
-      <div className="border-b border-gray-200 bg-white sticky top-16 z-40">
+      <div className="border-b border-white/20 bg-black sticky top-16 z-40">
         <div className="max-w-7xl mx-auto container-padding">
           <nav className="flex space-x-8" aria-label="Tabs">
             <button
               onClick={() => setActiveTab('jobs')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'jobs'
-                  ? 'border-black text-black'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-white text-white'
+                  : 'border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-500'
               } transition-colors duration-200`}
             >
               Job Opportunities ({filteredJobs.length})
@@ -500,8 +500,8 @@ export default function Hiring() {
               onClick={() => setActiveTab('companies')}
               className={`py-4 px-1 border-b-2 font-medium text-sm ${
                 activeTab === 'companies'
-                  ? 'border-black text-black'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-white text-white'
+                  : 'border-transparent text-gray-400 hover:text-gray-300 hover:border-gray-500'
               } transition-colors duration-200`}
             >
               Hiring Companies ({companies.length})
@@ -529,7 +529,7 @@ export default function Hiring() {
                       placeholder="Search jobs, companies, skills..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-200  text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -539,7 +539,7 @@ export default function Hiring() {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   >
                     {jobTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
@@ -549,7 +549,7 @@ export default function Hiring() {
                   <select
                     value={selectedRemote}
                     onChange={(e) => setSelectedRemote(e.target.value)}
-                    className="border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   >
                     {remoteOptions.map(option => (
                       <option key={option} value={option}>{option}</option>
@@ -559,7 +559,7 @@ export default function Hiring() {
                   <select
                     value={selectedIndustry}
                     onChange={(e) => setSelectedIndustry(e.target.value)}
-                    className="border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   >
                     {industries.map(industry => (
                       <option key={industry} value={industry}>{industry}</option>
@@ -569,7 +569,7 @@ export default function Hiring() {
                   <select
                     value={selectedLocation}
                     onChange={(e) => setSelectedLocation(e.target.value)}
-                    className="border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                   >
                     {locations.map(location => (
                       <option key={location} value={location}>{location}</option>

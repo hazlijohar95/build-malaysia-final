@@ -52,13 +52,55 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       <Navigation />
       <main>
-        <HeroSection />
-        <ProfilesSection />
-        <CompaniesSection />
-        <TestimonialsSection />
+        {/* Hero Section - Main headline */}
+        <section className="pt-32 pb-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium text-white mb-8 leading-tight">
+              Extraordinary Technology
+              <br />
+              Companies Trust Us.
+            </h1>
+            <p className="text-xl text-gray-400 mb-16">
+              Across AI / Chips / Crypto / Fintech / Consumer / Biotech / Robotics
+            </p>
+          </div>
+        </section>
+
+        {/* Companies Grid - 2x2 layout */}
+        <section className="pb-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-2 gap-1 border border-white/20">
+              <div className="aspect-video bg-black border-r border-white/20 border-b border-white/20 flex items-center justify-center p-8">
+                <div className="text-white text-2xl font-light tracking-wider">
+                  ramp 🏔️
+                </div>
+              </div>
+              <div className="aspect-video bg-black border-b border-white/20 flex items-center justify-center p-8">
+                <div className="text-white text-2xl font-light">
+                  🥰 Lovable
+                </div>
+              </div>
+              <div className="aspect-video bg-black border-r border-white/20 flex items-center justify-center p-8">
+                <div className="text-center">
+                  <div className="text-white text-sm tracking-widest mb-2">@FOUNDERSFUND</div>
+                  <div className="w-16 h-12 bg-gray-600 mx-auto mb-2"></div>
+                  <div className="text-white text-xs tracking-widest">FOUNDERS FUND</div>
+                  <div className="text-white text-xs tracking-wider">BACKING REVOLUTIONARY COMPANIES</div>
+                </div>
+              </div>
+              <div className="aspect-video bg-black flex items-center justify-center p-8">
+                <div className="text-white text-2xl font-light flex items-center gap-2">
+                  <div className="w-8 h-8 bg-white/20"></div>
+                  Cognition
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <CTASection />
       </main>
       <Footer />

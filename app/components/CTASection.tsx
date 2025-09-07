@@ -1,27 +1,22 @@
 export default function CTASection() {
   return (
-    <section className="py-32 lg:py-40 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section className="py-32 lg:py-40 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="mx-auto max-w-7xl text-center">
-        <h2 className="text-5xl sm:text-6xl lg:text-8xl font-medium text-black mb-16 leading-tight tracking-tight">
-          Do great work
-          <br />
-          in Malaysia.
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white mb-12 leading-tight">
+          Do great work in Malaysia.
           <br />
           <span className="text-gray-400">Join Build.Malaysia</span>
         </h2>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="btn-primary text-lg px-10 py-4 font-medium">
-            Begin Evaluation
+          <button className="bg-white text-black px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+            Check Eligibility
           </button>
-          <button className="btn-secondary text-lg px-10 py-4 font-medium">
-            Learn More
+          <button className="bg-transparent text-white border border-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-black transition-colors duration-200">
+            See Who Qualified
           </button>
         </div>
         
-        <p className="mt-12 text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Join Malaysia's most exclusive network of extraordinary talent building the future of Southeast Asia.
-        </p>
       </div>
     </section>
   );
