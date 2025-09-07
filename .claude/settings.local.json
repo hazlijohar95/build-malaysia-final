@@ -38,7 +38,11 @@
       "Bash(gh ssh-key add:*)",
       "Bash(GIT_CURL_VERBOSE=1 git push origin master --force)",
       "Bash(git fetch:*)",
-      "Bash(git remote remove:*)"
+      "Bash(git remote remove:*)",
+      "Bash(git --version)",
+      "Bash(/opt/homebrew/bin/git --version)",
+      "Bash(/opt/homebrew/bin/git add .)",
+      "Bash(/opt/homebrew/bin/git commit -m \"fix: remove large PNG files and update gitignore\")"
     ],
     "deny": [],
     "ask": []
