@@ -7,7 +7,7 @@ export default function CTASection() {
           <br />
           in Malaysia.
           <br />
-          <span className="text-gray-400">Join build malaysia.</span>
+          <span className="text-gray-400">Join Build.Malaysia</span>
         </h2>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

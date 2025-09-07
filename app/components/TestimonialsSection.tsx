@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const testimonials = [
   {
-    quote: "Build Malaysia connected me with opportunities I never thought possible. The network here understands what it means to be Malaysian and extraordinary.",
+    quote: "Build.Malaysia connected me with opportunities I never thought possible. The network here understands what it means to be Malaysian and extraordinary.",
     author: "Ahmad Haziq",
     title: "Senior Engineer, now building Malaysia's next unicorn",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
         {/* Section Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-black leading-tight tracking-tight">
-            Working with build malaysia
+            Working with Build.Malaysia
           </h2>
         </div>
 

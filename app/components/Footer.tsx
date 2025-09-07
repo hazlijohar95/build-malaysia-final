@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
-          <div>© 2025 Build Malaysia. All rights reserved.</div>
+          <div>© 2025 Build.Malaysia · All rights reserved.</div>
           <div className="mt-4 sm:mt-0">
             Made for Malaysia's extraordinary talent.
           </div>

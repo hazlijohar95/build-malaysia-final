@@ -5,12 +5,12 @@ import Footer from '~/components/Footer';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Blog · Build Malaysia' },
+    { title: 'Blog · Build.Malaysia' },
     { name: 'description', content: 'Insights on Malaysian talent acquisition, visa processes, and building extraordinary careers in Malaysia. Learn from industry experts and successful professionals.' },
     { name: 'keywords', content: 'Malaysia talent blog, visa insights, career development, extraordinary professionals, Malaysian diaspora' },
-    { property: 'og:title', content: 'Blog · Build Malaysia' },
+    { property: 'og:title', content: 'Blog · Build.Malaysia' },
     { property: 'og:description', content: 'Insights on Malaysian talent acquisition, visa processes, and building extraordinary careers in Malaysia.' },
-    { name: 'twitter:title', content: 'Blog · Build Malaysia' },
+    { name: 'twitter:title', content: 'Blog · Build.Malaysia' },
     { name: 'twitter:description', content: 'Insights on Malaysian talent acquisition, visa processes, and building extraordinary careers in Malaysia.' },
   ];
 };

@@ -7,112 +7,22 @@ interface LogoProps {
 
 export default function Logo({ className = "", linkToHome = true }: LogoProps) {
   const logoContent = (
-    <div className={`inline-block ${className}`}>
-      <div className="leading-none">
-        <div 
-          className="text-2xl font-medium tracking-tight text-black"
-          style={{ 
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontWeight: 500,
-            letterSpacing: '-0.02em'
-          }}
-        >
-          Build
-        </div>
-        <div 
-          className="text-2xl font-normal italic text-black mt-0.5"
-          style={{ 
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontStyle: 'italic',
-            fontWeight: 400,
-            letterSpacing: '-0.01em'
-          }}
-        >
-          Malaysia
-        </div>
-      </div>
-    </div>
-  );
-
-  if (linkToHome) {
-    return (
-      <Link 
-        to="/" 
-        className="inline-block hover:opacity-80 transition-opacity duration-200"
-        aria-label="Build Malaysia - Home"
-      >
-        {logoContent}
-      </Link>
-    );
-  }
-
-  return logoContent;
-}
-
-// Variant with different sizes
-export function LogoLarge({ className = "", linkToHome = true }: LogoProps) {
-  const logoContent = (
-    <div className={`inline-block ${className}`}>
-      <div className="leading-none">
-        <div 
-          className="text-5xl font-medium tracking-tight text-black"
-          style={{ 
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontWeight: 600,
-            letterSpacing: '-0.03em'
-          }}
-        >
-          Build
-        </div>
-        <div 
-          className="text-5xl font-normal italic text-black mt-1"
-          style={{ 
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-            fontStyle: 'italic',
-            fontWeight: 400,
-            letterSpacing: '-0.02em'
-          }}
-        >
-          Malaysia
-        </div>
-      </div>
-    </div>
-  );
-
-  if (linkToHome) {
-    return (
-      <Link 
-        to="/" 
-        className="inline-block hover:opacity-80 transition-opacity duration-200"
-        aria-label="Build Malaysia - Home"
-      >
-        {logoContent}
-      </Link>
-    );
-  }
-
-  return logoContent;
-}
-
-// Minimal single-line variant for compact spaces
-export function LogoCompact({ className = "", linkToHome = true }: LogoProps) {
-  const logoContent = (
-    <div className={`inline-flex items-baseline gap-2 ${className}`}>
+    <div className={`inline-flex items-baseline ${className}`}>
       <span 
-        className="text-xl font-medium tracking-tight text-black"
+        className="text-xl font-bold tracking-tight text-black"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontWeight: 500,
+          fontWeight: 700,
           letterSpacing: '-0.02em'
         }}
       >
         Build
       </span>
+      <span className="text-xl text-black">.</span>
       <span 
-        className="text-xl font-normal italic text-black"
+        className="text-xl font-normal tracking-tight text-black"
         style={{ 
           fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontStyle: 'italic',
           fontWeight: 400,
           letterSpacing: '-0.01em'
         }}
@@ -127,7 +37,50 @@ export function LogoCompact({ className = "", linkToHome = true }: LogoProps) {
       <Link 
         to="/" 
         className="inline-block hover:opacity-80 transition-opacity duration-200"
-        aria-label="Build Malaysia - Home"
+        aria-label="Build.Malaysia - Home"
+      >
+        {logoContent}
+      </Link>
+    );
+  }
+
+  return logoContent;
+}
+
+// Variant with larger size
+export function LogoLarge({ className = "", linkToHome = true }: LogoProps) {
+  const logoContent = (
+    <div className={`inline-flex items-baseline ${className}`}>
+      <span 
+        className="text-4xl font-bold tracking-tight text-black"
+        style={{ 
+          fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          fontWeight: 700,
+          letterSpacing: '-0.03em'
+        }}
+      >
+        Build
+      </span>
+      <span className="text-4xl text-black">.</span>
+      <span 
+        className="text-4xl font-normal tracking-tight text-black"
+        style={{ 
+          fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          fontWeight: 400,
+          letterSpacing: '-0.02em'
+        }}
+      >
+        Malaysia
+      </span>
+    </div>
+  );
+
+  if (linkToHome) {
+    return (
+      <Link 
+        to="/" 
+        className="inline-block hover:opacity-80 transition-opacity duration-200"
+        aria-label="Build.Malaysia - Home"
       >
         {logoContent}
       </Link>

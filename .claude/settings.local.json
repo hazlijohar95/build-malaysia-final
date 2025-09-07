@@ -44,7 +44,8 @@
       "Bash(/opt/homebrew/bin/git add .)",
       "Bash(/opt/homebrew/bin/git commit -m \"fix: remove large PNG files and update gitignore\")",
       "Bash(/opt/homebrew/bin/git push origin master)",
-      "Bash(/opt/homebrew/bin/git commit -m \"feat: create beautiful Build Malaysia logo component\n\n- Build in Inter regular font\n- Malaysia in Inter italic below\n- Pure black color maintaining monochrome aesthetic\n- Three variants: default, large, and compact\n- Integrated into Navigation and Footer\n- Removed emoji from footer for cleaner aesthetic\")"
+      "Bash(/opt/homebrew/bin/git commit -m \"feat: create beautiful Build Malaysia logo component\n\n- Build in Inter regular font\n- Malaysia in Inter italic below\n- Pure black color maintaining monochrome aesthetic\n- Three variants: default, large, and compact\n- Integrated into Navigation and Footer\n- Removed emoji from footer for cleaner aesthetic\")",
+      "Bash(/opt/homebrew/bin/git commit -m \"refactor: redesign logo as Build.Malaysia with bold styling\n\n- Changed from stacked layout to inline Build.Malaysia format\n- Bold weight (700) for ''Build'', regular for ''Malaysia''\n- Clean period separator between words\n- Updated branding across all pages and components\n- Consistent Build.Malaysia naming throughout application\")"
     ],
     "deny": [],
     "ask": []

@@ -5,12 +5,12 @@ import Footer from '~/components/Footer';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Evaluation · Build Malaysia' },
+    { title: 'Evaluation · Build.Malaysia' },
     { name: 'description', content: 'Discover if you qualify as extraordinary talent for Malaysia\'s premier professional network. Complete our comprehensive assessment to unlock exclusive opportunities.' },
     { name: 'keywords', content: 'talent assessment, Malaysia evaluation, extraordinary professional, skills assessment, career evaluation' },
-    { property: 'og:title', content: 'Evaluation · Build Malaysia' },
+    { property: 'og:title', content: 'Evaluation · Build.Malaysia' },
     { property: 'og:description', content: 'Discover if you qualify as extraordinary talent for Malaysia\'s premier professional network.' },
-    { name: 'twitter:title', content: 'Evaluation · Build Malaysia' },
+    { name: 'twitter:title', content: 'Evaluation · Build.Malaysia' },
     { name: 'twitter:description', content: 'Discover if you qualify as extraordinary talent for Malaysia\'s premier professional network.' },
   ];
 };
@@ -722,7 +722,7 @@ export default function Evaluation() {
                 Evaluation Submitted Successfully!
               </h1>
               <p className="text-lg text-gray-600 mb-6">
-                Thank you for completing the Build Malaysia talent evaluation. Our team will review your submission and contact you within 5-7 business days.
+                Thank you for completing the Build.Malaysia talent evaluation. Our team will review your submission and contact you within 5-7 business days.
               </p>
               <div className="bg-white rounded-lg p-6 mb-6 text-left">
                 <h3 className="font-semibold text-gray-900 mb-4">What happens next?</h3>

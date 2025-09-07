@@ -5,12 +5,12 @@ import Footer from '~/components/Footer';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Club · Build Malaysia' },
+    { title: 'Club · Build.Malaysia' },
     { name: 'description', content: 'Join an exclusive community of extraordinary Malaysian professionals. Connect, collaborate, and contribute to Malaysia\'s future through our elite talent network.' },
     { name: 'keywords', content: 'Malaysia talent club, exclusive network, professionals community, extraordinary talent, elite membership' },
-    { property: 'og:title', content: 'Club · Build Malaysia' },
+    { property: 'og:title', content: 'Club · Build.Malaysia' },
     { property: 'og:description', content: 'Join an exclusive community of extraordinary Malaysian professionals.' },
-    { name: 'twitter:title', content: 'Club · Build Malaysia' },
+    { name: 'twitter:title', content: 'Club · Build.Malaysia' },
     { name: 'twitter:description', content: 'Join an exclusive community of extraordinary Malaysian professionals.' },
   ];
 };
@@ -127,7 +127,7 @@ const upcomingEvents = [
 const testimonials = [
   {
     id: 1,
-    content: 'The Build Malaysia Club connected me with opportunities I never would have discovered on my own. Within 6 months of joining, I was offered a leadership role at a Malaysian unicorn startup.',
+    content: 'The Build.Malaysia Club connected me with opportunities I never would have discovered on my own. Within 6 months of joining, I was offered a leadership role at a Malaysian unicorn startup.',
     author: 'Ahmad Zafran',
     title: 'Senior Software Engineer at Google',
     image: '/api/placeholder/60/60'
