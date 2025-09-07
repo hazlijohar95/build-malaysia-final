@@ -93,7 +93,7 @@ const upcomingEvents = [
     attendees: 120,
     maxAttendees: 150,
     image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=200&fit=crop&crop=center',
-    description: 'Annual gathering of Malaysian tech leaders from global companies.'
+    description: 'Annual gathering of Malaysian tech leaders from global companies.',
     speakers: ['Ahmad Rahman (Google)', 'Sarah Lim (Former Goldman Sachs)', 'Dr. Priya (DeepMind)']
   },
   {
