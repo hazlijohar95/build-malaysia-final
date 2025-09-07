@@ -1,4 +1,5 @@
 import { Link } from '@remix-run/react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -6,9 +7,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center">
           <div className="mb-8 lg:mb-0">
-            <Link to="/" className="text-black font-medium text-base tracking-tight">
-              build malaysia
-            </Link>
+            <Logo />
             <p className="mt-2 text-sm text-gray-600 max-w-md">
               Connecting extraordinary Malaysian talent to build the nation's future.
             </p>
@@ -47,9 +46,9 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
-          <div>© 2024 Build Malaysia. All rights reserved.</div>
+          <div>© 2025 Build Malaysia. All rights reserved.</div>
           <div className="mt-4 sm:mt-0">
-            Made with ❤️ for Malaysia's extraordinary talent.
+            Made for Malaysia's extraordinary talent.
           </div>
         </div>
       </div>

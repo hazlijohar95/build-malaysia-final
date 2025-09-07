@@ -1,4 +1,5 @@
 import { Link } from '@remix-run/react';
+import Logo from './Logo';
 
 export default function Navigation() {
   return (
@@ -6,9 +7,7 @@ export default function Navigation() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-black font-medium text-base tracking-tight">
-            build malaysia
-          </Link>
+          <Logo />
           
           {/* Navigation Links - Hidden on mobile */}
           <div className="hidden md:flex items-center space-x-8">
