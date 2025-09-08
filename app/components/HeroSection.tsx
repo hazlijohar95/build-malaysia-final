@@ -2,27 +2,27 @@ import { Link } from '@remix-run/react';
 
 const profiles = [
   { 
-    name: "Ahmad Rahman", 
-    achievement: "10M+ Followers on LinkedIn", 
-    description: "Building Malaysia's AI future", 
+    name: "Tan Min-Liang", 
+    achievement: "CEO & Co-founder of Razer", 
+    description: "Built gaming empire from Singapore, Malaysian roots", 
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face"
   },
   { 
-    name: "Siti Nurhaliza", 
-    achievement: "Listed as 30 under 30 most inspiring by Forbes Asia", 
-    description: "Leading fintech revolution",
+    name: "Michelle Zatlyn", 
+    achievement: "Co-founder & COO of Cloudflare", 
+    description: "From KL to Silicon Valley, protecting the internet",
     image: "https://images.unsplash.com/photo-1494790108755-2616b512d0b7?w=400&h=600&fit=crop&crop=face"
   },
   { 
-    name: "Raj Kumar", 
-    achievement: "Malaysia's Youngest Unicorn Founder", 
-    description: "Transforming Southeast Asia",
+    name: "Anthony Tan", 
+    achievement: "CEO & Co-founder of Grab", 
+    description: "Southeast Asia's super-app revolution",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop&crop=face"
   },
   { 
-    name: "Michelle Tan", 
-    achievement: "Stanford Research Scholar", 
-    description: "Quantum computing pioneer",
+    name: "Ridhwan Aziz", 
+    achievement: "Co-founder of MoneyLion", 
+    description: "Fintech unicorn serving millions globally",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop&crop=face"
   },
 ];

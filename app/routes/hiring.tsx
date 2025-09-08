@@ -201,6 +201,68 @@ const jobListings = [
     featured: false,
     companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
     applicationDeadline: '2024-02-15'
+  },
+  {
+    id: 7,
+    title: 'Head of Digital Innovation',
+    company: 'AirAsia Group',
+    location: 'Kuala Lumpur',
+    type: 'Full-time',
+    remote: 'Hybrid',
+    salary: 'RM 280,000 - 400,000',
+    experience: '10+ years',
+    skills: ['Digital Transformation', 'Innovation Strategy', 'Travel Tech', 'Team Leadership'],
+    description: 'Lead digital innovation initiatives across AirAsia\'s ecosystem. Drive the transformation from airline to travel and lifestyle super app.',
+    requirements: [
+      'MBA or equivalent with technology focus',
+      '10+ years in digital transformation roles',
+      'Experience in travel, aviation, or consumer tech',
+      'Strong leadership and innovation track record',
+      'Understanding of Southeast Asian markets'
+    ],
+    benefits: [
+      'Executive compensation package',
+      'Free flights for family',
+      'Stock option participation',
+      'International assignment opportunities',
+      'Innovation lab access'
+    ],
+    postedDate: '2024-01-12',
+    urgent: false,
+    featured: true,
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
+    applicationDeadline: '2024-02-28'
+  },
+  {
+    id: 8,
+    title: 'Senior Data Scientist - Machine Learning',
+    company: 'Carsome',
+    location: 'Petaling Jaya',
+    type: 'Full-time',
+    remote: 'Hybrid',
+    salary: 'RM 140,000 - 190,000',
+    experience: '5+ years',
+    skills: ['Machine Learning', 'Python', 'Computer Vision', 'Data Science'],
+    description: 'Build ML models to revolutionize car pricing, quality assessment, and customer experience. Work with cutting-edge computer vision and predictive analytics.',
+    requirements: [
+      'Masters in Data Science, ML, or related field',
+      '5+ years of hands-on ML experience',
+      'Expertise in computer vision and NLP',
+      'Experience with large-scale data systems',
+      'Background in e-commerce or automotive preferred'
+    ],
+    benefits: [
+      'Competitive salary with equity',
+      'Flexible working arrangements',
+      'Tech allowance and equipment',
+      'Professional development budget',
+      'Car purchase discounts'
+    ],
+    postedDate: '2024-01-08',
+    urgent: true,
+    featured: false,
+    companyLogo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=80&h=80&fit=crop&crop=center',
+    applicationDeadline: '2024-02-20'
   }
 ];
 
@@ -252,31 +314,55 @@ const companies = [
     logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
     website: 'https://kpj.com',
     benefits: ['Medical coverage', 'Research funding', 'Conference allowances', 'Continuing education']
+  },
+  {
+    id: 5,
+    name: 'AirAsia Group',
+    industry: 'Aviation & Travel',
+    size: '4000+ employees',
+    description: 'Asia\'s leading low-cost airline group, now expanding into digital services, logistics, and fintech.',
+    culture: 'Innovation, agility, and entrepreneurial spirit with a mission to make travel accessible to everyone.',
+    openPositions: 18,
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
+    website: 'https://airasia.com',
+    benefits: ['Free flights', 'Performance bonuses', 'Career mobility', 'Innovation projects']
+  },
+  {
+    id: 6,
+    name: 'Carsome',
+    industry: 'Automotive Technology',
+    size: '1500+ employees',
+    description: 'Southeast Asia\'s largest integrated car e-commerce platform revolutionizing the used car market.',
+    culture: 'Data-driven, customer-obsessed, and fast-paced environment focused on disrupting traditional industries.',
+    openPositions: 22,
+    logo: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=120&h=120&fit=crop&crop=center',
+    website: 'https://carsome.my',
+    benefits: ['Equity participation', 'Flexible working', 'Tech allowances', 'Growth opportunities']
   }
 ];
 
 const jobTypes = ['All Types', 'Full-time', 'Part-time', 'Contract', 'Freelance'];
 const remoteOptions = ['All Remote Options', 'On-site', 'Hybrid', 'Remote'];
-const industries = ['All Industries', 'Technology', 'Financial Services', 'Healthcare', 'Manufacturing', 'Consulting'];
-const locations = ['All Locations', 'Kuala Lumpur', 'Selangor', 'Penang', 'Johor', 'Cyberjaya'];
+const industries = ['All Industries', 'Technology', 'Financial Services', 'Healthcare', 'Aviation & Travel', 'Automotive Technology', 'Manufacturing', 'Consulting'];
+const locations = ['All Locations', 'Kuala Lumpur', 'Petaling Jaya', 'Selangor', 'Penang', 'Johor', 'Cyberjaya'];
 
 function JobCard({ job }: { job: typeof jobListings[0] }) {
   const daysAgo = Math.floor((new Date().getTime() - new Date(job.postedDate).getTime()) / (1000 * 60 * 60 * 24));
   
   return (
-    <div className={`bg-white  border-2 p-6 transition-all duration-300 hover:shadow-lg group ${
-      job.featured ? 'border-gray-300 shadow-sm' : 'border-gray-100 hover:border-gray-200'
+    <div className={`bg-black border-2 p-6 transition-all duration-300 hover:shadow-lg group ${
+      job.featured ? 'border-white shadow-sm' : 'border-gray-600 hover:border-white'
     }`}>
       {job.featured && (
         <div className="flex items-center mb-4">
-          <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800">
+          <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-800 text-white">
             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             Featured
           </span>
           {job.urgent && (
-            <span className="ml-2 inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800">
+            <span className="ml-2 inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-800 text-white">
               Urgent Hiring
             </span>
           )}
@@ -288,14 +374,14 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
           <img
             src={job.companyLogo}
             alt={job.company}
-            className="w-12 h-12  object-cover bg-gray-100 flex-shrink-0"
+            className="w-12 h-12 object-cover bg-gray-800 flex-shrink-0"
           />
           <div className="min-w-0 flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors mb-1">
+            <h3 className="text-lg font-semibold text-white group-hover:text-gray-300 transition-colors mb-1">
               {job.title}
             </h3>
-            <p className="text-gray-600 font-medium mb-1">{job.company}</p>
-            <div className="flex items-center text-sm text-gray-500 space-x-4">
+            <p className="text-gray-300 font-medium mb-1">{job.company}</p>
+            <div className="flex items-center text-sm text-gray-400 space-x-4">
               <div className="flex items-center">
                 <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -319,31 +405,31 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
         </div>
         
         <div className="text-right flex-shrink-0">
-          <div className="text-lg font-bold text-gray-900">{job.salary}</div>
-          <div className="text-sm text-gray-500">{job.experience}</div>
+          <div className="text-lg font-bold text-white">{job.salary}</div>
+          <div className="text-sm text-gray-400">{job.experience}</div>
         </div>
       </div>
       
-      <p className="text-gray-700 mb-4 line-clamp-2">{job.description}</p>
+      <p className="text-gray-300 mb-4 line-clamp-2">{job.description}</p>
       
       <div className="flex flex-wrap gap-1.5 mb-4">
         {job.skills.slice(0, 4).map((skill) => (
           <span
             key={skill}
-            className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-800"
+            className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-800 text-white"
           >
             {skill}
           </span>
         ))}
         {job.skills.length > 4 && (
-          <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-medium bg-gray-100 text-gray-600">
+          <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-800 text-gray-400">
             +{job.skills.length - 4} more
           </span>
         )}
       </div>
       
-      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-        <div className="flex items-center text-sm text-gray-500">
+      <div className="flex items-center justify-between pt-4 border-t border-gray-600">
+        <div className="flex items-center text-sm text-gray-400">
           <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
           </svg>
@@ -351,10 +437,10 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
         </div>
         
         <div className="flex space-x-2">
-          <button className="px-4 py-2 border border-gray-300  text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+          <button className="px-4 py-2 border border-gray-600 text-sm font-medium text-gray-300 hover:bg-gray-800 transition-colors duration-200">
             Save
           </button>
-          <button className="px-6 py-2 bg-black text-white  text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
+          <button className="btn-primary">
             Apply Now
           </button>
         </div>
@@ -365,30 +451,30 @@ function JobCard({ job }: { job: typeof jobListings[0] }) {
 
 function CompanyCard({ company }: { company: typeof companies[0] }) {
   return (
-    <div className="bg-white  border border-gray-200 p-6 hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+    <div className="bg-black border border-gray-600 p-6 hover:border-white transition-all duration-300 hover:shadow-lg">
       <div className="flex items-start space-x-4 mb-6">
         <img
           src={company.logo}
           alt={company.name}
-          className="w-16 h-16  object-cover bg-gray-100"
+          className="w-16 h-16 object-cover bg-gray-800"
         />
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-gray-900 mb-1">{company.name}</h3>
-          <p className="text-gray-600 mb-2">{company.industry} • {company.size}</p>
-          <p className="text-sm text-gray-600 line-clamp-2">{company.description}</p>
+          <h3 className="text-xl font-semibold text-white mb-1">{company.name}</h3>
+          <p className="text-gray-300 mb-2">{company.industry} • {company.size}</p>
+          <p className="text-sm text-gray-300 line-clamp-2">{company.description}</p>
         </div>
       </div>
       
       <div className="mb-4">
-        <h4 className="text-sm font-medium text-gray-900 mb-2">Company Culture</h4>
-        <p className="text-sm text-gray-600">{company.culture}</p>
+        <h4 className="text-sm font-medium text-white mb-2">Company Culture</h4>
+        <p className="text-sm text-gray-300">{company.culture}</p>
       </div>
       
       <div className="flex flex-wrap gap-1 mb-6">
         {company.benefits.map((benefit) => (
           <span
             key={benefit}
-            className="inline-flex items-center px-2 py-1  text-xs font-medium bg-gray-100 text-gray-700"
+            className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-800 text-white"
           >
             {benefit}
           </span>
@@ -396,19 +482,19 @@ function CompanyCard({ company }: { company: typeof companies[0] }) {
       </div>
       
       <div className="flex items-center justify-between">
-        <div className="text-sm text-gray-600">
-          <span className="font-medium text-gray-900">{company.openPositions}</span> open positions
+        <div className="text-sm text-gray-300">
+          <span className="font-medium text-white">{company.openPositions}</span> open positions
         </div>
         <div className="flex space-x-2">
           <a
             href={company.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 border border-gray-300  text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+            className="px-4 py-2 border border-gray-600 text-sm font-medium text-gray-300 hover:bg-gray-800 transition-colors duration-200"
           >
             Visit Website
           </a>
-          <button className="px-4 py-2 bg-black text-white  text-sm font-medium hover:bg-gray-800 transition-colors duration-200">
+          <button className="btn-primary px-4">
             View Jobs
           </button>
         </div>
@@ -436,7 +522,9 @@ export default function Hiring() {
       const matchesIndustry = selectedIndustry === 'All Industries' || 
                              (selectedIndustry === 'Technology' && (job.company.includes('Grab') || job.company.includes('Fintech') || job.company.includes('Aerodyne'))) ||
                              (selectedIndustry === 'Financial Services' && job.company.includes('CIMB')) ||
-                             (selectedIndustry === 'Healthcare' && job.company.includes('KPJ'));
+                             (selectedIndustry === 'Healthcare' && job.company.includes('KPJ')) ||
+                             (selectedIndustry === 'Aviation & Travel' && job.company.includes('AirAsia')) ||
+                             (selectedIndustry === 'Automotive Technology' && job.company.includes('Carsome'));
       const matchesLocation = selectedLocation === 'All Locations' || job.location.includes(selectedLocation);
       
       return matchesSearch && matchesType && matchesRemote && matchesIndustry && matchesLocation;
@@ -455,14 +543,14 @@ export default function Hiring() {
         <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl text-balance">
-              Extraordinary Opportunities
+              The Extraordinary Talent Company
               <span className="block text-gray-300">
-                Await in Malaysia
+                of Malaysia
               </span>
             </h1>
             <p className="mt-6 text-xl text-gray-300 text-balance">
               Discover career-defining opportunities with Malaysia's leading companies. 
-              Join organizations that are shaping the future of business in Southeast Asia.
+              Join organizations that are building Malaysia's future and expanding across Southeast Asia.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
               <div className="flex items-center">
@@ -513,7 +601,7 @@ export default function Hiring() {
       {activeTab === 'jobs' && (
         <>
           {/* Filters */}
-          <div className="bg-gray-50 border-b border-gray-100">
+          <div className="bg-gray-900 border-b border-gray-700">
             <div className="max-w-7xl mx-auto container-padding py-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Search */}
@@ -529,7 +617,7 @@ export default function Hiring() {
                       placeholder="Search jobs, companies, skills..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="block w-full pl-10 pr-3 py-3 border border-gray-200  text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-600 bg-black text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -539,7 +627,7 @@ export default function Hiring() {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-600 bg-black text-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                   >
                     {jobTypes.map(type => (
                       <option key={type} value={type}>{type}</option>
@@ -549,7 +637,7 @@ export default function Hiring() {
                   <select
                     value={selectedRemote}
                     onChange={(e) => setSelectedRemote(e.target.value)}
-                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-600 bg-black text-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                   >
                     {remoteOptions.map(option => (
                       <option key={option} value={option}>{option}</option>
@@ -559,7 +647,7 @@ export default function Hiring() {
                   <select
                     value={selectedIndustry}
                     onChange={(e) => setSelectedIndustry(e.target.value)}
-                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-600 bg-black text-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                   >
                     {industries.map(industry => (
                       <option key={industry} value={industry}>{industry}</option>
@@ -569,7 +657,7 @@ export default function Hiring() {
                   <select
                     value={selectedLocation}
                     onChange={(e) => setSelectedLocation(e.target.value)}
-                    className="border border-gray-200  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="border border-gray-600 bg-black text-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                   >
                     {locations.map(location => (
                       <option key={location} value={location}>{location}</option>
@@ -583,7 +671,7 @@ export default function Hiring() {
           {/* Job Listings */}
           <div className="max-w-7xl mx-auto container-padding py-12">
             <div className="mb-8">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-400">
                 Showing {filteredJobs.length} of {jobListings.length} positions
               </p>
             </div>
@@ -593,7 +681,7 @@ export default function Hiring() {
                 {/* Featured Jobs */}
                 {featuredJobs.length > 0 && (
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured Positions</h2>
+                    <h2 className="text-2xl font-bold text-white mb-6">Featured Positions</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                       {featuredJobs.map((job) => (
                         <JobCard key={job.id} job={job} />
@@ -605,7 +693,7 @@ export default function Hiring() {
                 {/* Regular Jobs */}
                 {regularJobs.length > 0 && (
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">All Positions</h2>
+                    <h2 className="text-2xl font-bold text-white mb-6">All Positions</h2>
                     <div className="space-y-4">
                       {regularJobs.map((job) => (
                         <JobCard key={job.id} job={job} />
@@ -619,8 +707,8 @@ export default function Hiring() {
                 <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">No jobs found</h3>
-                <p className="mt-2 text-gray-500">Try adjusting your search criteria or filters.</p>
+                <h3 className="mt-4 text-lg font-medium text-white">No jobs found</h3>
+                <p className="mt-2 text-gray-400">Try adjusting your search criteria or filters.</p>
               </div>
             )}
           </div>
@@ -630,8 +718,8 @@ export default function Hiring() {
       {activeTab === 'companies' && (
         <div className="max-w-7xl mx-auto container-padding py-12">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Companies Hiring Extraordinary Talent</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-white mb-4">Companies Hiring Extraordinary Talent</h2>
+            <p className="text-gray-300">
               Discover leading Malaysian companies that are actively seeking exceptional professionals to join their teams.
             </p>
           </div>

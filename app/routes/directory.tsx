@@ -19,64 +19,64 @@ export const meta: MetaFunction = () => {
 const profiles = [
   {
     id: 1,
-    name: 'Ahmad Zafran',
-    title: 'CEO, TechMalaysia',
+    name: 'Anthony Tan',
+    title: 'CEO & Co-founder, Grab',
     fromLocation: 'Kuala Lumpur',
-    toLocation: 'San Francisco, CA',
+    toLocation: 'Singapore → Malaysia',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
-    badges: ['O1A', 'YC', 'Techstars', 'Depict'],
-    tags: ['O-1A', 'Founders']
+    badges: ['Talent Pass', 'Harvard MBA', 'Grab', 'Unicorn'],
+    tags: ['Talent Pass', 'Founders']
   },
   {
     id: 2,
-    name: 'Arlan Rakhmetzhan',
-    title: 'Founder of Nozomio AI (YC S25)',
-    fromLocation: 'Penang',
-    toLocation: 'San Francisco, CA',
+    name: 'Tan Min-Liang',
+    title: 'CEO & Co-founder, Razer',
+    fromLocation: 'Singapore',
+    toLocation: 'Singapore → KL',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
-    badges: ['O1A', 'YC', 'F', 'N'],
-    tags: ['O-1A', 'Founders']
+    badges: ['Talent Pass', 'NUS', 'Razer', 'Gaming'],
+    tags: ['Talent Pass', 'Founders']
   },
   {
     id: 3,
-    name: 'Andrej Karpathy',
-    title: 'Co-founder of OpenAI, Tesla, Autopilot',
-    fromLocation: 'Johor',
-    toLocation: 'San Francisco, CA', 
+    name: 'Michelle Zatlyn',
+    title: 'Co-founder & COO, Cloudflare',
+    fromLocation: 'Kuala Lumpur',
+    toLocation: 'San Francisco → KL',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face',
-    badges: ['EB1A', 'Tesla', 'OpenAI', 'Stanford'],
-    tags: ['EB-1A', 'Founders']
+    badges: ['MM2H', 'Cloudflare', 'IPO', 'Stanford'],
+    tags: ['MM2H', 'Tech Leaders']
   },
   {
     id: 4,
-    name: 'Sigil Wen',
-    title: 'Founder of Extraordinary',
-    fromLocation: 'Selangor',
-    toLocation: 'San Francisco, CA',
+    name: 'Ridhwan Aziz',
+    title: 'Co-founder, MoneyLion',
+    fromLocation: 'Kuala Lumpur',
+    toLocation: 'New York → KL',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
-    badges: ['O1A', 'EB1A', 'Extraordinary', 'A16z'],
-    tags: ['O-1A', 'EB-1A', 'Founders']
+    badges: ['Talent Pass', 'MoneyLion', 'Fintech', 'Unicorn'],
+    tags: ['Talent Pass', 'Fintech Leaders']
   },
   {
     id: 5,
-    name: 'Guillermo Rauch',
-    title: 'CEO of Vercel',
-    fromLocation: 'Sabah',
-    toLocation: 'San Francisco, CA',
+    name: 'Cheryl Yeoh',
+    title: 'Former CEO, MaGIC',
+    fromLocation: 'Penang',
+    toLocation: 'Silicon Valley → KL',
     image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=80&h=80&fit=crop&crop=face',
-    badges: ['O1A', 'EB1A', 'Vercel', 'Next.js'],
-    tags: ['O-1A', 'EB-1A', 'Software Engineers']
+    badges: ['MM2H', 'MaGIC', 'Ecosystem', 'Investor'],
+    tags: ['MM2H', 'Ecosystem Builders']
   }
 ];
 
 // Filter tags exactly matching reference
 const filterTags = [
-  'O-1A',
+  'Talent Pass',
   'Founders', 
-  'Canada',
-  'Members at a16z',
-  'Software Engineers',
-  'Featured in SF Standard'
+  'MM2H',
+  'Tech Leaders',
+  'Fintech Leaders',
+  'Ecosystem Builders'
 ];
 
 export default function Directory() {

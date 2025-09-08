@@ -78,16 +78,16 @@ export default function Club() {
           </h1>
           
           <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            If you've received recognition as an Extraordinary Individual through Malaysia's talent programs, 
-            join our exclusive community and claim your exclusive merchandise.
+            If you've received Malaysia's Talent Pass (TP), Malaysia My Second Home (MM2H), or Residence Pass-Talent (RP-T), 
+            join our exclusive community of extraordinary professionals and claim your Malaysian excellence merchandise.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="bg-white text-black px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-colors">
-              I'm extraordinary. Claim merchandise!
+            <button className="btn-primary text-lg px-8 py-4">
+              I have Talent Pass/MM2H/RP-T. Claim merchandise!
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-black transition-colors">
-              I wanna become extraordinary
+            <button className="btn-secondary text-lg px-8 py-4 border-2">
+              I want to become extraordinary
             </button>
           </div>
         </div>

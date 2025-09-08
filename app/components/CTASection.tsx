@@ -9,10 +9,10 @@ export default function CTASection() {
         </h2>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="bg-white text-black px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+          <button className="btn-primary text-lg px-8 py-4">
             Check Eligibility
           </button>
-          <button className="bg-transparent text-white border border-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-black transition-colors duration-200">
+          <button className="btn-secondary text-lg px-8 py-4">
             See Who Qualified
           </button>
         </div>

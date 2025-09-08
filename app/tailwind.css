@@ -7,6 +7,30 @@
     scroll-behavior: smooth;
   }
   
+  /* Remove default blue focus styles and enforce monochrome brand */
+  *:focus {
+    outline: 2px solid white !important;
+    outline-offset: 2px;
+  }
+  
+  /* Override all default browser blue colors */
+  input:focus, select:focus, textarea:focus, button:focus {
+    outline: 2px solid white !important;
+    outline-offset: 2px;
+    border-color: white !important;
+  }
+  
+  /* Remove blue selection highlight */
+  ::selection {
+    background-color: white;
+    color: black;
+  }
+  
+  ::-moz-selection {
+    background-color: white;
+    color: black;
+  }
+  
   body {
     background-color: #000000;
     color: #ffffff;
@@ -23,15 +47,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-white text-black font-medium px-6 py-3 text-sm border border-white transition-all duration-300 hover:bg-gray-200 active:scale-95 cursor-pointer inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black;
+    @apply bg-white text-black font-medium px-6 py-3 text-sm border border-white transition-all duration-300 hover:bg-gray-200 active:scale-95 cursor-pointer inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black min-h-[44px];
   }
   
   .btn-secondary {
-    @apply bg-black text-white font-medium px-6 py-3 text-sm border border-white transition-all duration-300 hover:bg-gray-900 hover:border-gray-300 active:scale-95 cursor-pointer inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black;
+    @apply bg-black text-white font-medium px-6 py-3 text-sm border border-white transition-all duration-300 hover:bg-gray-900 hover:border-gray-300 active:scale-95 cursor-pointer inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black min-h-[44px];
   }
   
   .nav-link {
-    @apply text-sm font-normal text-gray-300 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full;
+    @apply text-sm font-normal text-gray-300 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full focus:outline-none focus-visible:text-white focus-visible:after:w-full;
   }
   
   .section-spacing {
@@ -55,6 +79,98 @@
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease-out forwards;
   }
+  
+  /* Premium Form Animations */
+  .step-transition {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .step-enter {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  
+  .step-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .step-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .step-exit-active {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.6, 1);
+  }
+  
+  /* Enhanced Form Fields */
+  .form-field {
+    @apply relative transition-all duration-200 ease-out;
+  }
+  
+  .form-field input, .form-field select, .form-field textarea {
+    @apply w-full px-4 py-4 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500 transition-all duration-300 ease-out focus:outline-none focus:border-white focus:bg-gray-900;
+  }
+  
+  .form-field input:hover, .form-field select:hover, .form-field textarea:hover {
+    @apply border-gray-600 bg-gray-900/70;
+  }
+  
+  .form-field label {
+    @apply block text-sm font-medium text-gray-300 mb-2 transition-colors duration-200;
+  }
+  
+  .form-field input:focus + label, .form-field select:focus + label, .form-field textarea:focus + label {
+    @apply text-white;
+  }
+  
+  /* Error states */
+  .form-field.error input, .form-field.error select, .form-field.error textarea {
+    @apply border-red-600 bg-red-950/20;
+  }
+  
+  .form-field.error label {
+    @apply text-red-400;
+  }
+  
+  /* Success states */
+  .form-field.success input, .form-field.success select, .form-field.success textarea {
+    @apply border-green-600 bg-green-950/20;
+  }
+  
+  /* Premium Step Indicator */
+  .step-indicator {
+    @apply flex items-center justify-between mb-12;
+  }
+  
+  .step-dot {
+    @apply flex items-center justify-center w-10 h-10 border-2 text-sm font-medium transition-all duration-300;
+  }
+  
+  .step-dot.completed {
+    @apply bg-white text-black border-white scale-105;
+  }
+  
+  .step-dot.active {
+    @apply bg-gray-800 text-white border-white scale-110 shadow-lg shadow-white/20;
+  }
+  
+  .step-dot.inactive {
+    @apply bg-transparent text-gray-500 border-gray-700;
+  }
+  
+  .step-line {
+    @apply flex-1 h-0.5 mx-4 bg-gray-800 relative overflow-hidden transition-all duration-500;
+  }
+  
+  .step-line.completed::before {
+    content: '';
+    @apply absolute inset-0 bg-white;
+  }
 }
 
 @layer utilities {
@@ -71,5 +187,29 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up,
+  .animate-fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

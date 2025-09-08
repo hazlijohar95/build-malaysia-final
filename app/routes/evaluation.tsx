@@ -249,16 +249,25 @@ const returnTimeframes = [
 
 function StepIndicator({ currentStep, totalSteps }: { currentStep: number; totalSteps: number }) {
   return (
-    <div className="mb-8">
-      <div className="flex items-center justify-between">
+    <div className="mb-12">
+      {/* Progress Bar */}
+      <div className="relative h-1 bg-gray-800 overflow-hidden mb-8">
+        <div 
+          className="absolute h-full bg-gradient-to-r from-white to-gray-300 transition-all duration-700 ease-out"
+          style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+        />
+      </div>
+      
+      {/* Step Indicators */}
+      <div className="step-indicator">
         {steps.map((step, index) => (
-          <div key={step.id} className="flex items-center">
-            <div className={`flex items-center justify-center w-10 h-10 border-2 text-sm font-medium ${
+          <div key={step.id} className="flex flex-col items-center">
+            <div className={`step-dot ${
               index + 1 < currentStep
-                ? 'bg-black border-black text-white'
+                ? 'completed'
                 : index + 1 === currentStep
-                ? 'bg-black border-black text-white'
-                : 'bg-white border-gray-300 text-gray-400'
+                ? 'active'
+                : 'inactive'
             }`}>
               {index + 1 < currentStep ? (
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -268,15 +277,18 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
                 step.id
               )}
             </div>
+            <span className="mt-2 text-xs text-gray-400 hidden sm:block text-center max-w-[80px]">
+              {step.title}
+            </span>
             {index < steps.length - 1 && (
-              <div className={`flex-1 h-0.5 mx-4 ${
-                index + 1 < currentStep ? 'bg-black' : 'bg-gray-300'
-              }`} />
+              <div className={`step-line ${index + 1 < currentStep ? 'completed' : ''}`} />
             )}
           </div>
         ))}
       </div>
-      <div className="mt-4 text-center">
+      
+      {/* Current Step Info */}
+      <div className="mt-8 text-center step-transition">
         <h2 className="text-2xl font-bold text-white">{steps[currentStep - 1].title}</h2>
         <p className="text-gray-300 mt-1">{steps[currentStep - 1].description}</p>
       </div>
@@ -290,10 +302,10 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
   errors?: FormErrors;
 }) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 step-enter-active">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+        <div className={`form-field ${errors.fullName ? 'error' : ''}`}>
+          <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-2">
             Full Name *
           </label>
           <input
@@ -301,19 +313,22 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="fullName"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
-              errors.fullName ? 'border-red-500 bg-red-50' : 'border-gray-300'
-            }`}
+            className="w-full px-4 py-4 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500 transition-all duration-300 ease-out focus:outline-none focus:border-white focus:bg-gray-900"
             placeholder="Enter your full name"
             required
           />
           {errors.fullName && (
-            <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
+            <p className="mt-2 text-sm text-red-400 flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              {errors.fullName}
+            </p>
           )}
         </div>
         
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+        <div className={`form-field ${errors.email ? 'error' : ''}`}>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
             Email Address *
           </label>
           <input
@@ -321,21 +336,24 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
-              errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
-            }`}
+            className="w-full px-4 py-4 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500 transition-all duration-300 ease-out focus:outline-none focus:border-white focus:bg-gray-900"
             placeholder="your@email.com"
             required
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+            <p className="mt-2 text-sm text-red-400 flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              {errors.email}
+            </p>
           )}
         </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+        <div className={`form-field ${errors.phone ? 'error' : ''}`}>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
             Phone Number *
           </label>
           <input
@@ -343,19 +361,22 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="phone"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className={`w-full px-4 py-3 border  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent ${
-              errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
-            }`}
+            className="w-full px-4 py-4 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500 transition-all duration-300 ease-out focus:outline-none focus:border-white focus:bg-gray-900"
             placeholder="+60 12 345 6789"
             required
           />
           {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+            <p className="mt-2 text-sm text-red-400 flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              {errors.phone}
+            </p>
           )}
         </div>
         
         <div>
-          <label htmlFor="currentLocation" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="currentLocation" className="block text-sm font-medium text-gray-300 mb-2">
             Current Location *
           </label>
           <input
@@ -363,7 +384,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="currentLocation"
             value={formData.currentLocation}
             onChange={(e) => setFormData({ ...formData, currentLocation: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="City, Country"
             required
           />
@@ -372,7 +393,7 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="nationality" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="nationality" className="block text-sm font-medium text-gray-300 mb-2">
             Nationality *
           </label>
           <input
@@ -380,21 +401,21 @@ function PersonalInformationStep({ formData, setFormData, errors = {} }: {
             id="nationality"
             value={formData.nationality}
             onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="Malaysian, American, etc."
             required
           />
         </div>
         
         <div>
-          <label htmlFor="malaysianConnection" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="malaysianConnection" className="block text-sm font-medium text-gray-300 mb-2">
             Connection to Malaysia
           </label>
           <select
             id="malaysianConnection"
             value={formData.malaysianConnection}
             onChange={(e) => setFormData({ ...formData, malaysianConnection: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           >
             <option value="">Select connection type</option>
             {connectionTypes.map((type) => (
@@ -416,7 +437,7 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="currentRole" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="currentRole" className="block text-sm font-medium text-gray-300 mb-2">
             Current Role/Title *
           </label>
           <input
@@ -424,14 +445,14 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
             id="currentRole"
             value={formData.currentRole}
             onChange={(e) => setFormData({ ...formData, currentRole: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="e.g., Senior Software Engineer"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="currentCompany" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="currentCompany" className="block text-sm font-medium text-gray-300 mb-2">
             Current Company *
           </label>
           <input
@@ -439,7 +460,7 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
             id="currentCompany"
             value={formData.currentCompany}
             onChange={(e) => setFormData({ ...formData, currentCompany: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="e.g., Google, Microsoft, Goldman Sachs"
             required
           />
@@ -448,14 +469,14 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="industry" className="block text-sm font-medium text-gray-300 mb-2">
             Industry *
           </label>
           <select
             id="industry"
             value={formData.industry}
             onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             required
           >
             <option value="">Select your industry</option>
@@ -466,14 +487,14 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
         </div>
         
         <div>
-          <label htmlFor="experienceYears" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="experienceYears" className="block text-sm font-medium text-gray-300 mb-2">
             Years of Experience *
           </label>
           <select
             id="experienceYears"
             value={formData.experienceYears}
             onChange={(e) => setFormData({ ...formData, experienceYears: e.target.value })}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             required
           >
             <option value="">Select experience range</option>
@@ -485,7 +506,7 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
       </div>
       
       <div>
-        <label htmlFor="education" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="education" className="block text-sm font-medium text-gray-300 mb-2">
           Education Background *
         </label>
         <textarea
@@ -493,14 +514,14 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
           value={formData.education}
           onChange={(e) => setFormData({ ...formData, education: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="e.g., MBA from Harvard Business School, BS Computer Science from Stanford"
           required
         />
       </div>
       
       <div>
-        <label htmlFor="linkedinProfile" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="linkedinProfile" className="block text-sm font-medium text-gray-300 mb-2">
           LinkedIn Profile
         </label>
         <input
@@ -508,7 +529,7 @@ function ProfessionalBackgroundStep({ formData, setFormData, errors = {} }: {
           id="linkedinProfile"
           value={formData.linkedinProfile}
           onChange={(e) => setFormData({ ...formData, linkedinProfile: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="https://linkedin.com/in/yourprofile"
         />
       </div>
@@ -525,14 +546,14 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
     <div className="space-y-6">
       <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">What makes you extraordinary?</h3>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-300">
           Share your exceptional achievements, recognition, and contributions that set you apart from your peers. 
           Be specific about awards, publications, patents, leadership roles, or any other notable accomplishments.
         </p>
       </div>
       
       <div>
-        <label htmlFor="achievements" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="achievements" className="block text-sm font-medium text-gray-300 mb-2">
           Key Professional Achievements *
         </label>
         <textarea
@@ -540,7 +561,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
           value={formData.achievements}
           onChange={(e) => setFormData({ ...formData, achievements: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Describe your most significant professional accomplishments, including quantifiable results where possible"
           required
         />
@@ -548,7 +569,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="awards" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="awards" className="block text-sm font-medium text-gray-300 mb-2">
             Awards & Recognition
           </label>
           <textarea
@@ -556,13 +577,13 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
             value={formData.awards}
             onChange={(e) => setFormData({ ...formData, awards: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="List any awards, honors, or formal recognition you've received"
           />
         </div>
         
         <div>
-          <label htmlFor="publications" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="publications" className="block text-sm font-medium text-gray-300 mb-2">
             Publications & Research
           </label>
           <textarea
@@ -570,7 +591,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
             value={formData.publications}
             onChange={(e) => setFormData({ ...formData, publications: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="Academic papers, articles, research contributions, etc."
           />
         </div>
@@ -578,7 +599,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="patents" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="patents" className="block text-sm font-medium text-gray-300 mb-2">
             Patents & Innovations
           </label>
           <textarea
@@ -586,13 +607,13 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
             value={formData.patents}
             onChange={(e) => setFormData({ ...formData, patents: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="Patents held, innovations created, or technical breakthroughs"
           />
         </div>
         
         <div>
-          <label htmlFor="leadership" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="leadership" className="block text-sm font-medium text-gray-300 mb-2">
             Leadership Roles
           </label>
           <textarea
@@ -600,14 +621,14 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
             value={formData.leadership}
             onChange={(e) => setFormData({ ...formData, leadership: e.target.value })}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
             placeholder="Significant leadership positions, team sizes managed, etc."
           />
         </div>
       </div>
       
       <div>
-        <label htmlFor="mediaRecognition" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="mediaRecognition" className="block text-sm font-medium text-gray-300 mb-2">
           Media Coverage & Speaking
         </label>
         <textarea
@@ -615,7 +636,7 @@ function ExtraordinaryCriteriaStep({ formData, setFormData, errors = {} }: {
           value={formData.mediaRecognition}
           onChange={(e) => setFormData({ ...formData, mediaRecognition: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Media appearances, conference speaking, thought leadership, etc."
         />
       </div>
@@ -632,20 +653,20 @@ function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: {
     <div className="space-y-6">
       <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">Your Malaysia Story</h3>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-300">
           Help us understand your relationship with Malaysia and how you plan to contribute to the country's development.
         </p>
       </div>
       
       <div>
-        <label htmlFor="connectionType" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="connectionType" className="block text-sm font-medium text-gray-300 mb-2">
           Type of Malaysia Connection *
         </label>
         <select
           id="connectionType"
           value={formData.connectionType}
           onChange={(e) => setFormData({ ...formData, connectionType: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           required
         >
           <option value="">Select your connection to Malaysia</option>
@@ -656,7 +677,7 @@ function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: {
       </div>
       
       <div>
-        <label htmlFor="familyTies" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="familyTies" className="block text-sm font-medium text-gray-300 mb-2">
           Family & Personal Ties
         </label>
         <textarea
@@ -664,13 +685,13 @@ function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: {
           value={formData.familyTies}
           onChange={(e) => setFormData({ ...formData, familyTies: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Describe your family connections, personal ties, or emotional connection to Malaysia"
         />
       </div>
       
       <div>
-        <label htmlFor="previousExperience" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="previousExperience" className="block text-sm font-medium text-gray-300 mb-2">
           Previous Malaysia Experience
         </label>
         <textarea
@@ -678,13 +699,13 @@ function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: {
           value={formData.previousExperience}
           onChange={(e) => setFormData({ ...formData, previousExperience: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Any previous work, study, or significant experience in Malaysia"
         />
       </div>
       
       <div>
-        <label htmlFor="culturalContribution" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="culturalContribution" className="block text-sm font-medium text-gray-300 mb-2">
           Cultural & Social Contribution *
         </label>
         <textarea
@@ -692,7 +713,7 @@ function MalaysiaConnectionStep({ formData, setFormData, errors = {} }: {
           value={formData.culturalContribution}
           onChange={(e) => setFormData({ ...formData, culturalContribution: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="How do you plan to contribute to Malaysia's cultural, social, or economic development? What unique value can you bring?"
           required
         />
@@ -710,20 +731,20 @@ function FutureIntentionsStep({ formData, setFormData, errors = {} }: {
     <div className="space-y-6">
       <div className="bg-gray-50 border border-gray-200  p-4 mb-6">
         <h3 className="font-medium text-gray-900 mb-2">Your Malaysia Future</h3>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-gray-300">
           Share your vision for how you'll contribute to Malaysia's growth and development.
         </p>
       </div>
       
       <div>
-        <label htmlFor="returnTimeframe" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="returnTimeframe" className="block text-sm font-medium text-gray-300 mb-2">
           Return/Contribution Timeframe *
         </label>
         <select
           id="returnTimeframe"
           value={formData.returnTimeframe}
           onChange={(e) => setFormData({ ...formData, returnTimeframe: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           required
         >
           <option value="">Select your timeframe</option>
@@ -734,7 +755,7 @@ function FutureIntentionsStep({ formData, setFormData, errors = {} }: {
       </div>
       
       <div>
-        <label htmlFor="interestedRoles" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="interestedRoles" className="block text-sm font-medium text-gray-300 mb-2">
           Roles/Opportunities of Interest *
         </label>
         <textarea
@@ -742,14 +763,14 @@ function FutureIntentionsStep({ formData, setFormData, errors = {} }: {
           value={formData.interestedRoles}
           onChange={(e) => setFormData({ ...formData, interestedRoles: e.target.value })}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="What types of roles, opportunities, or positions interest you in Malaysia?"
           required
         />
       </div>
       
       <div>
-        <label htmlFor="contributionAreas" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="contributionAreas" className="block text-sm font-medium text-gray-300 mb-2">
           Areas of Contribution *
         </label>
         <textarea
@@ -757,14 +778,14 @@ function FutureIntentionsStep({ formData, setFormData, errors = {} }: {
           value={formData.contributionAreas}
           onChange={(e) => setFormData({ ...formData, contributionAreas: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Which sectors or areas would you like to contribute to? (e.g., technology innovation, financial services, healthcare, education, policy)"
           required
         />
       </div>
       
       <div>
-        <label htmlFor="longTermGoals" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="longTermGoals" className="block text-sm font-medium text-gray-300 mb-2">
           Long-term Vision *
         </label>
         <textarea
@@ -772,7 +793,7 @@ function FutureIntentionsStep({ formData, setFormData, errors = {} }: {
           value={formData.longTermGoals}
           onChange={(e) => setFormData({ ...formData, longTermGoals: e.target.value })}
           rows={4}
-          className="w-full px-4 py-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+          className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-800 text-white placeholder-gray-500  focus:outline-none focus:ring-2 focus:border-white focus:bg-gray-900 transition-all duration-300 ease-out"
           placeholder="Describe your long-term goals and vision for your contribution to Malaysia's development"
           required
         />
@@ -932,24 +953,24 @@ export default function Evaluation() {
         <div className="max-w-4xl mx-auto container-padding">
           <StepIndicator currentStep={currentStep} totalSteps={steps.length} />
           
-          <div className="bg-white border border-gray-200  p-8">
+          <div className="bg-gray-950/50 border border-gray-800/50 backdrop-blur-sm p-8 shadow-2xl shadow-black/50">
             {renderCurrentStep()}
             
-            <div className="flex justify-between mt-8 pt-6 border-t border-gray-100">
+            <div className="flex justify-between mt-8 pt-6 border-t border-gray-800">
               <button
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
-                className={`px-6 py-3  font-medium transition-colors duration-200 ${
+                className={`px-6 py-3 font-medium transition-colors duration-200 ${
                   currentStep === 1
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-gray-800 text-gray-500 cursor-not-allowed border-2 border-gray-700'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border-2 border-gray-600 hover:border-gray-500'
                 }`}
               >
                 Previous
               </button>
               
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-400">
                   Step {currentStep} of {steps.length}
                 </span>
                 {currentStep === steps.length ? (
@@ -973,9 +994,9 @@ export default function Evaluation() {
           
           {/* Help Text */}
           <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Need help? Contact us at{' '}
-              <a href="mailto:evaluation@buildmalaysia.com" className="text-black hover:underline">
+              <a href="mailto:evaluation@buildmalaysia.com" className="text-white hover:underline hover:text-gray-200 transition-colors">
                 evaluation@buildmalaysia.com
               </a>
             </p>

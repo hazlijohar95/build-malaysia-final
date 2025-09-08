@@ -55,23 +55,25 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     initializeTheme();
 
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
-      // Only apply system theme if user hasn't set a manual preference
-      const savedTheme = localStorage.getItem('build-malaysia-theme');
-      if (!savedTheme) {
-        const systemTheme: Theme = e.matches ? 'dark' : 'light';
-        setThemeState(systemTheme);
-        applyTheme(systemTheme);
-      }
-    };
+    // Listen for system theme changes (only in browser)
+    if (typeof window !== 'undefined') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+        // Only apply system theme if user hasn't set a manual preference
+        const savedTheme = localStorage.getItem('build-malaysia-theme');
+        if (!savedTheme) {
+          const systemTheme: Theme = e.matches ? 'dark' : 'light';
+          setThemeState(systemTheme);
+          applyTheme(systemTheme);
+        }
+      };
 
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
 
-    return () => {
-      mediaQuery.removeEventListener('change', handleSystemThemeChange);
-    };
+      return () => {
+        mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      };
+    }
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
